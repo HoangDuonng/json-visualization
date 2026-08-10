@@ -9,10 +9,12 @@ export const ViewMenu = () => {
     defaultValue: ViewMode.Graph,
   });
 
+  const selectedValue = viewMode === ViewMode.Tree ? ViewMode.Tree : ViewMode.Graph;
+
   return (
     <SegmentedControl
       size="xs"
-      value={viewMode}
+      value={selectedValue}
       onChange={value => {
         setViewMode(value as ViewMode);
         gaEvent("change_view_mode", { label: value });
@@ -20,7 +22,6 @@ export const ViewMenu = () => {
       data={[
         { value: ViewMode.Graph, label: "Graph" },
         { value: ViewMode.Tree, label: "Tree" },
-        { value: ViewMode.JsonDraw, label: "Draw" },
       ]}
       styles={{
         root: {

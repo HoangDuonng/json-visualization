@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { useSessionStorage } from "@mantine/hooks";
 import styled from "styled-components";
 import { ViewMode } from "../../constants/enumData";
@@ -30,15 +31,15 @@ const StyledLiveEditor = styled.div`
 `;
 
 const View = () => {
+  const router = useRouter();
   const [viewMode] = useSessionStorage({
     key: "viewMode",
     defaultValue: ViewMode.Graph,
   });
 
-  if (viewMode === ViewMode.Graph) return <GraphView />;
+  if (router.pathname === "/draw") return <JsonDrawView />;
   if (viewMode === ViewMode.Tree) return <TreeView />;
-  if (viewMode === ViewMode.JsonDraw) return <JsonDrawView />;
-  return null;
+  return <GraphView />;
 };
 
 const LiveEditor = () => {
