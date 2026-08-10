@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { Group, Paper, Stack, Text, Title, ThemeIcon, SimpleGrid } from "@mantine/core";
-import styled from "styled-components";
+import { Group, SimpleGrid, Stack, Text, ThemeIcon, Title } from "@mantine/core";
 import { generateNextSeo } from "next-seo/pages";
 import { FaBolt, FaToolbox } from "react-icons/fa";
 import { IoBrushOutline, IoImages } from "react-icons/io5";
@@ -14,84 +13,21 @@ import { ChatButton } from "../components/ChatButton";
 import { CodeBlock } from "../components/CodeBlock";
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { SEO } from "../constants/seo";
+import {
+  sampleCsv,
+  sampleJson,
+  StyledContentBody,
+  StyledDocsContainer,
+  StyledDocsPaper,
+  StyledFeatureCard,
+  StyledLink,
+} from "../features/docs";
 import { useTranslation } from "../i18n";
 import Layout from "../layout/PageLayout";
-import { PublicContainer } from "../layout/PageLayout/PublicPage";
 
-const StyledDocsContainer = styled(PublicContainer)`
-  padding-block: clamp(3rem, 7vw, 6rem);
-  & > .mantine-Stack-root {
-    gap: 0;
-  }
-  & > .mantine-Stack-root > div:first-child {
-    padding-bottom: 3rem;
-    border-bottom: 1px solid var(--public-border);
-  }
-  & > .mantine-Stack-root > .mantine-Paper-root {
-    padding: clamp(2.5rem, 6vw, 4rem) 0;
-    border: 0;
-    border-bottom: 1px solid var(--public-border);
-    border-radius: 0;
-    background: transparent;
-  }
-  h1 {
-    font-size: var(--public-type-page-title);
-    letter-spacing: -0.04em;
-    line-height: 1.05;
-  }
-  @media (max-width: 480px) {
-    & > .mantine-Stack-root > div:first-child {
-      flex-direction: column;
-      align-items: flex-start !important;
-      gap: 1.5rem;
-    }
-  }
-`;
-
-const StyledContentBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  line-height: 1.7;
-`;
-
-const StyledFeatureCard = styled(Paper)<any>`
-  cursor: pointer;
-  border: 0;
-  border-top: 1px solid var(--public-border);
-  border-radius: 0;
-  transition: border-color var(--public-motion);
-  height: 100%;
-  background: var(--site-surface, #fffdf7);
-  color: var(--site-text, #1a1a1a);
-  border-color: var(--site-border, #e8e4db);
-
-  &:hover {
-    border-color: var(--public-accent);
-  }
-`;
-
-const StyledLink = styled.a`
-  color: var(--site-text, #1a1a1a);
-  text-decoration: none;
-  font-weight: 500;
-
-  &:hover {
-    text-decoration: underline;
-    text-decoration-color: var(--site-accent, #37ff8b);
-    text-decoration-thickness: 3px;
-  }
-`;
-
-const StyledDocsPaper = styled(Paper)<any>`
-  background: var(--site-surface, #fffdf7);
-  color: var(--site-text, #1a1a1a);
-  border-color: var(--site-border, #e8e4db);
-`;
-
-const Docs = () => {
+const DocsPage = () => {
   const { t, locale } = useTranslation("docs");
-  const [chatOpened, setChatOpened] = React.useState(false);
+  const [chatOpened, setChatOpened] = useState(false);
 
   const getLocalizedLink = (path: string) => {
     return locale === "vi" ? `${path}?lang=vi` : path;
@@ -185,31 +121,6 @@ const Docs = () => {
       answer: t("index.faq5Answer"),
     },
   ];
-
-  const sampleJson = `{
-  "customer": {
-    "id": 1024,
-    "name": "Jane Doe",
-    "email": "jane@example.com"
-  },
-  "orders": [
-    {
-      "id": "A-1001",
-      "total": 129.5,
-      "status": "paid"
-    },
-    {
-      "id": "A-1002",
-      "total": 89.0,
-      "status": "pending"
-    }
-  ]
-}`;
-
-  const sampleCsv = `id,product,price
-101,Notebook,12.5
-102,Pen,3.2
-103,Backpack,39.9`;
 
   return (
     <Layout>
@@ -409,4 +320,4 @@ const Docs = () => {
   );
 };
 
-export default Docs;
+export default DocsPage;
