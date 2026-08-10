@@ -34,16 +34,21 @@ const CustomNodeWrapper = (nodeProps: NodeProps<NodeData>) => {
       onClick={handleNodeClick as any}
       animated={false}
       label={null as any}
+      rx={8}
+      ry={8}
       onEnter={ev => {
-        ev.currentTarget.style.stroke = "#3B82F6";
+        ev.currentTarget.style.stroke = "#3b82f6";
+        ev.currentTarget.style.strokeWidth = "2px";
       }}
       onLeave={ev => {
-        ev.currentTarget.style.stroke = colorScheme === "dark" ? "#424242" : "#BCBEC0";
+        ev.currentTarget.style.stroke = colorScheme === "dark" ? "#3f3f46" : "#e2e8f0";
+        ev.currentTarget.style.strokeWidth = "1px";
       }}
       style={{
-        fill: colorScheme === "dark" ? "#292929" : "#ffffff",
-        stroke: colorScheme === "dark" ? "#424242" : "#BCBEC0",
+        fill: colorScheme === "dark" ? "#18181b" : "#ffffff",
+        stroke: colorScheme === "dark" ? "#3f3f46" : "#e2e8f0",
         strokeWidth: 1,
+        filter: "drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05))",
       }}
     >
       {({ node, x, y }) => {

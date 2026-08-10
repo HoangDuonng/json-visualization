@@ -26,28 +26,15 @@ const StyledEditorWrapper = styled.div<{
   height: 100vh;
 
   --bg-color: ${({ theme }) => theme.GRID_BG_COLOR};
-  --line-color-1: ${({ theme }) => theme.GRID_COLOR_PRIMARY};
-  --line-color-2: ${({ theme }) => theme.GRID_COLOR_SECONDARY};
+  --dot-color: ${({ theme }) => (theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "#cbd5e1" : "#3f3f46")};
 
   background-color: var(--bg-color);
-  ${({ $showRulers, $showGrid }) =>
-    $showRulers &&
+  ${({ $showGrid }) =>
     $showGrid &&
     `
-    background-image: linear-gradient(var(--line-color-1) 1.5px, transparent 1.5px),
-      linear-gradient(90deg, var(--line-color-1) 1.5px, transparent 1.5px),
-      linear-gradient(var(--line-color-2) 1px, transparent 1px),
-      linear-gradient(90deg, var(--line-color-2) 1px, transparent 1px);
-    background-position:
-      -1.5px -1.5px,
-      -1.5px -1.5px,
-      -1px -1px,
-      -1px -1px;
-    background-size:
-      100px 100px,
-      100px 100px,
-      20px 20px,
-      20px 20px;
+    background-image: radial-gradient(var(--dot-color) 1.25px, transparent 1.25px);
+    background-size: 20px 20px;
+    background-position: 0 0;
   `};
 
   .jsoncrack-space {
