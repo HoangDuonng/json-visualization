@@ -7,6 +7,7 @@ import {
   IoChevronForward,
   IoClose,
   IoCopyOutline,
+  IoLink,
   IoOpenOutline,
   IoTimeOutline,
   IoTrashOutline,
@@ -15,15 +16,15 @@ import type { ShortenResult } from "../../types";
 import { ITEMS_PER_PAGE } from "../../utils/historyStorage";
 import {
   StyledBackdrop,
+  StyledCardBottom,
+  StyledCardTop,
   StyledClearButton,
   StyledCloseButton,
   StyledCountText,
   StyledEmptyState,
   StyledIconButton,
   StyledItemActions,
-  StyledItemInfo,
-  StyledItemOriginalUrl,
-  StyledItemRow,
+  StyledItemCard,
   StyledItemShortLink,
   StyledItemTime,
   StyledModalBody,
@@ -31,6 +32,7 @@ import {
   StyledModalHeader,
   StyledModalTitleGroup,
   StyledModalToolbar,
+  StyledOriginalLinkBox,
   StyledPageBtn,
   StyledPageNav,
   StyledPaginationFooter,
@@ -110,8 +112,8 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({
 
               <div>
                 {paginatedHistory.map(item => (
-                  <StyledItemRow key={item.code}>
-                    <StyledItemInfo>
+                  <StyledItemCard key={item.code}>
+                    <StyledCardTop>
                       <StyledItemShortLink
                         href={item.shortUrl}
                         target="_blank"
@@ -119,50 +121,60 @@ export const HistoryModal: React.FC<HistoryModalProps> = ({
                       >
                         {item.shortUrl}
                       </StyledItemShortLink>
-                      <StyledItemOriginalUrl title={item.originalUrl}>
-                        {item.originalUrl}
-                      </StyledItemOriginalUrl>
-                      {item.createdAt && (
-                        <StyledItemTime>{new Date(item.createdAt).toLocaleString()}</StyledItemTime>
-                      )}
-                    </StyledItemInfo>
 
-                    <StyledItemActions>
-                      <CopyButton value={item.shortUrl}>
-                        {({ copied, copy }) => (
-                          <Tooltip label={copied ? "Copied!" : "Copy"}>
-                            <StyledIconButton onClick={copy} aria-label="Copy short link">
-                              {copied ? (
-                                <IoCheckmark size={16} color="var(--public-accent)" />
-                              ) : (
-                                <IoCopyOutline size={16} />
-                              )}
-                            </StyledIconButton>
-                          </Tooltip>
-                        )}
-                      </CopyButton>
-                      <Tooltip label="Open">
-                        <StyledIconButton
-                          as="a"
-                          href={item.shortUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Open link"
-                        >
-                          <IoOpenOutline size={16} />
-                        </StyledIconButton>
-                      </Tooltip>
-                      <Tooltip label="Delete">
-                        <StyledIconButton
-                          className="delete-btn"
-                          onClick={() => handleDeleteItem(item.code)}
-                          aria-label="Delete link"
-                        >
-                          <IoTrashOutline size={16} />
-                        </StyledIconButton>
-                      </Tooltip>
-                    </StyledItemActions>
-                  </StyledItemRow>
+                      <StyledItemActions>
+                        <CopyButton value={item.shortUrl}>
+                          {({ copied, copy }) => (
+                            <Tooltip label={copied ? "Copied!" : "Copy"}>
+                              <StyledIconButton onClick={copy} aria-label="Copy short link">
+                                {copied ? (
+                                  <IoCheckmark size={16} color="var(--public-accent)" />
+                                ) : (
+                                  <IoCopyOutline size={16} />
+                                )}
+                              </StyledIconButton>
+                            </Tooltip>
+                          )}
+                        </CopyButton>
+
+                        <Tooltip label="Open">
+                          <StyledIconButton
+                            as="a"
+                            href={item.shortUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Open link"
+                          >
+                            <IoOpenOutline size={16} />
+                          </StyledIconButton>
+                        </Tooltip>
+
+                        <Tooltip label="Delete">
+                          <StyledIconButton
+                            className="delete-btn"
+                            onClick={() => handleDeleteItem(item.code)}
+                            aria-label="Delete link"
+                          >
+                            <IoTrashOutline size={16} />
+                          </StyledIconButton>
+                        </Tooltip>
+                      </StyledItemActions>
+                    </StyledCardTop>
+
+                    <StyledCardBottom>
+                      <StyledOriginalLinkBox title={item.originalUrl}>
+                        <IoLink size={13} style={{ flexShrink: 0 }} />
+                        <span>{item.originalUrl}</span>
+                      </StyledOriginalLinkBox>
+
+                      {item.createdAt && (
+                        <StyledItemTime>
+                          <IoTimeOutline size={13} />
+                          <span>{new Date(item.createdAt).toLocaleString()}</span>
+                        </StyledItemTime>
+                      )}
+                    </StyledCardBottom>
+                  </StyledItemCard>
                 ))}
               </div>
             </>

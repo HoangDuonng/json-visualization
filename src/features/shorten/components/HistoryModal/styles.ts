@@ -124,29 +124,38 @@ export const StyledClearButton = styled.button`
   }
 `;
 
-export const StyledItemRow = styled.div`
+/* Block Card Items */
+export const StyledItemCard = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 0.875rem 0;
-  border-bottom: 1px solid var(--public-border);
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--public-surface, #fbfaf7);
+  border: 1px solid var(--public-border, #d9d9d3);
+  border-radius: var(--public-radius-sm, 6px);
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: var(--public-border-strong, #bfc0b9);
+    background: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
 
   &:last-child {
-    border-bottom: none;
+    margin-bottom: 0;
   }
 `;
 
-export const StyledItemInfo = styled.div`
-  flex: 1;
-  min-width: 0;
+export const StyledCardTop = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 `;
 
 export const StyledItemShortLink = styled.a`
-  color: var(--public-accent);
+  color: var(--public-accent, #236b4a);
   font-family: var(--public-font-mono);
   font-size: 0.875rem;
   font-weight: 600;
@@ -157,19 +166,6 @@ export const StyledItemShortLink = styled.a`
     text-decoration: underline;
     text-decoration-color: currentColor;
   }
-`;
-
-export const StyledItemOriginalUrl = styled.span`
-  color: var(--public-text-muted);
-  font-size: 0.775rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-
-export const StyledItemTime = styled.span`
-  color: var(--public-text-subtle);
-  font-size: 0.7rem;
 `;
 
 export const StyledItemActions = styled.div`
@@ -183,8 +179,8 @@ export const StyledIconButton = styled.button`
   background: transparent;
   border: 1px solid transparent;
   color: var(--public-text-muted);
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: var(--public-radius-sm);
   display: inline-flex;
   align-items: center;
@@ -193,7 +189,7 @@ export const StyledIconButton = styled.button`
   transition: all 0.15s ease;
 
   &:hover {
-    background: var(--public-surface);
+    background: var(--public-surface, #fbfaf7);
     border-color: var(--public-border);
     color: var(--public-text);
   }
@@ -203,6 +199,44 @@ export const StyledIconButton = styled.button`
     border-color: #f8d7d7;
     color: #d9383a;
   }
+`;
+
+export const StyledCardBottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--public-border, #e8e4db);
+`;
+
+export const StyledOriginalLinkBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex: 1;
+  color: var(--public-text-muted, #5f625b);
+  background: rgba(0, 0, 0, 0.03);
+  padding: 4px 8px;
+  border-radius: 4px;
+
+  span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+  }
+`;
+
+export const StyledItemTime = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--public-text-subtle, #81847c);
+  font-size: 0.72rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 `;
 
 export const StyledPaginationFooter = styled.div`
