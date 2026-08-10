@@ -10,23 +10,32 @@ const StyledZoomControls = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
-  right: 12px;
-  bottom: 12px;
+  left: 16px;
+  bottom: 16px;
   z-index: 100;
   overflow: hidden;
-  border: 1px solid ${({ theme }) => theme.EDITOR_BORDER};
-  border-radius: 6px;
-  background: ${({ theme }) => theme.EDITOR_PANEL};
-  box-shadow: 0 8px 24px rgb(0 0 0 / 8%);
+  border: 1px solid
+    ${({ theme }) => (theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "#e2e8f0" : "#3f3f46")};
+  border-radius: 8px;
+  background: ${({ theme }) => (theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "#ffffff" : "#27272a")};
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
   button {
     border-radius: 0;
     background: transparent;
-    color: ${({ theme }) => theme.INTERACTIVE_NORMAL};
+    color: ${({ theme }) => (theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "#475569" : "#94a3b8")};
+    transition: all 0.15s ease;
+
+    &:hover {
+      background: ${({ theme }) =>
+        theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "#f1f5f9" : "#3f3f46"};
+      color: ${({ theme }) => (theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "#0f172a" : "#f8fafc")};
+    }
   }
 
   button + button {
-    border-left: 1px solid ${({ theme }) => theme.EDITOR_BORDER};
+    border-left: 1px solid
+      ${({ theme }) => (theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "#e2e8f0" : "#3f3f46")};
   }
 `;
 

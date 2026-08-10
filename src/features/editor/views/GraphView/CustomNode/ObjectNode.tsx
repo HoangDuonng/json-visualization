@@ -24,6 +24,7 @@ const Row = ({ row, x, y, index }: RowProps) => {
   return (
     <Styled.StyledRow
       $value={row.value}
+      $isFirst={index === 0}
       data-key={`${row.key}: ${row.value}`}
       data-x={x}
       data-y={y + rowPosition}
