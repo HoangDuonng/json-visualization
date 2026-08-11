@@ -35,23 +35,11 @@ JSON Visualization is a tool for visualizing JSON data in a structured, interact
 - **Export Image**: Download your visualization as PNG, JPEG, or SVG.
 - **Privacy**: All data processing is local; nothing is stored on our servers.
 
-## Recognition
-
-<a href="https://news.ycombinator.com/item?id=32626873">
-  <img
-    style="width: 250px; height: 54px;" width="250" height="54"
-    alt="Featured on Hacker News"
-    src="https://hackernews-badge.vercel.app/api?id=32626873"
-  />
-</a>
-
-<a href="https://producthunt.com/posts/JSON-Visualization?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-json-visualization" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=332281&theme=light" alt="JSON Visualization | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
-
-### Built With
+## Built With
 
 - [Next.js](https://nextjs.org/)
-- [React.js](https://reactjs.org/)
-- [Reaflow](https://reaflow.dev/)
+- [React.js](https://react.dev/)
+- [Reaflow](https://github.com/reaviz/reaflow)
 - [Monaco Editor](https://github.com/suren-atoyan/monaco-react)
 
 ## For AI Agents
@@ -62,7 +50,7 @@ This repository includes [Agent Skills](.agents/skills/) - structured documentat
 
 ## Stay Up-to-Date
 
-JSON Visualization officially launched as v1.0 on the 17th of February 2022 and we've come a long way so far. Watch **releases** of this repository to be notified of future updates:
+Watch **releases** of this repository to be notified of future updates:
 
 <a href="https://github.com/HoangDuonng/Json_Visualization"><img src="https://img.shields.io/github/stars/HoangDuonng/Json_Visualization" alt="Star at GitHub" /></a>
 
