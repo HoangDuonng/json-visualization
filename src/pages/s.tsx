@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { get, ref } from "firebase/database";
 import { generateNextSeo } from "next-seo/pages";
-import { SEO } from "../constants/seo";
+import { buildSeo } from "../constants/seo";
 import Layout from "../layout/PageLayout";
 import {
   PublicActions,
@@ -75,11 +75,12 @@ const RedirectPage = () => {
     return (
       <Layout>
         <Head>
-          {generateNextSeo({
-            ...SEO,
-            title: "Link Not Found | JSON Visualization",
-            noindex: true,
-          })}
+          {generateNextSeo(
+            buildSeo({
+              title: "Link Not Found | JSON Visualization",
+              noindex: true,
+            })
+          )}
         </Head>
         <PublicContainer $narrow>
           <PublicToolHeader>
@@ -104,10 +105,11 @@ const RedirectPage = () => {
   return (
     <Layout>
       <Head>
-        {generateNextSeo({
-          ...SEO,
-          title: "Redirecting... | JSON Visualization",
-        })}
+        {generateNextSeo(
+          buildSeo({
+            title: "Redirecting... | JSON Visualization",
+          })
+        )}
       </Head>
       <PublicContainer $narrow>
         <PublicToolHeader>

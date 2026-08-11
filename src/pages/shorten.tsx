@@ -3,7 +3,7 @@ import Head from "next/head";
 import { generateNextSeo } from "next-seo/pages";
 import { IoTimeOutline } from "react-icons/io5";
 import { toast } from "sonner";
-import { SEO } from "../constants/seo";
+import { buildSeo } from "../constants/seo";
 import {
   getHistory,
   HistoryModal,
@@ -41,13 +41,14 @@ const ShortenPage = () => {
   return (
     <Layout>
       <Head>
-        {generateNextSeo({
-          ...SEO,
-          title: "URL Shortener - JSON Visualization",
-          description:
-            "Shorten long URLs for free. Create short, shareable links powered by JSON Visualization.",
-          canonical: "https://jsonviz.online/shorten",
-        })}
+        {generateNextSeo(
+          buildSeo({
+            title: "URL Shortener - JSON Visualization",
+            description:
+              "Shorten long URLs for free. Create short, shareable links powered by JSON Visualization.",
+            canonical: "https://jsonviz.online/shorten",
+          })
+        )}
       </Head>
 
       <PublicContainer>
