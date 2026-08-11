@@ -1,2 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[53699],{34432:(_,t,s)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/type/yaml-to-rust",function(){return s(76905)}])},76905:(_,t,s)=>{"use strict";s.r(t),s.d(t,{default:()=>a});var u=s(33499);s(65235);var e=s(7934),r=s(49677);let a=()=>(0,u.jsx)(r.a,{from:e.o5.YAML,to:e.R9.Rust})}},_=>{_.O(0,[10607,79862,69788,57687,21718,49677,90636,46593,38792],()=>_(_.s=34432)),_N_E=_.O()}]);
-//# sourceMappingURL=yaml-to-rust-1893ef0ca1892cd6.js.map

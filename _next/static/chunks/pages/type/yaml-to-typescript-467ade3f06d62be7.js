@@ -1,2 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[60720],{290:(t,_,e)=>{"use strict";e.r(_),e.d(_,{default:()=>u});var p=e(33499);e(65235);var r=e(7934),s=e(49677);let u=()=>(0,p.jsx)(s.a,{from:r.o5.YAML,to:r.R9.TypeScript})},69424:(t,_,e)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/type/yaml-to-typescript",function(){return e(290)}])}},t=>{t.O(0,[10607,79862,69788,57687,21718,49677,90636,46593,38792],()=>t(t.s=69424)),_N_E=t.O()}]);
-//# sourceMappingURL=yaml-to-typescript-467ade3f06d62be7.js.map
