@@ -1,0 +1,1 @@
+export { FormatValidateView } from "./FormatValidateView";
