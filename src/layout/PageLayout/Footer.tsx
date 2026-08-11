@@ -139,7 +139,7 @@ export const Footer: React.FC<FooterProps> = ({ hideGithubLink = false }) => {
             </Link>
             {!hideGithubLink && (
               <StyledFooterLink
-                href="https://github.com/HoangDuonng/Json_Visualization"
+                href="https://github.com/hoangduonng"
                 target="_blank"
                 rel="noopener noreferrer"
               >
