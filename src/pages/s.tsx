@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { ref, get } from "firebase/database";
+import { get, ref } from "firebase/database";
+import { generateNextSeo } from "next-seo/pages";
+import { SEO } from "../constants/seo";
 import Layout from "../layout/PageLayout";
 import {
   PublicActions,
@@ -73,7 +75,11 @@ const RedirectPage = () => {
     return (
       <Layout>
         <Head>
-          <title>Link Not Found | JSON Visualization</title>
+          {generateNextSeo({
+            ...SEO,
+            title: "Link Not Found | JSON Visualization",
+            noindex: true,
+          })}
         </Head>
         <PublicContainer $narrow>
           <PublicToolHeader>
@@ -98,7 +104,10 @@ const RedirectPage = () => {
   return (
     <Layout>
       <Head>
-        <title>Redirecting... | JSON Visualization</title>
+        {generateNextSeo({
+          ...SEO,
+          title: "Redirecting... | JSON Visualization",
+        })}
       </Head>
       <PublicContainer $narrow>
         <PublicToolHeader>
