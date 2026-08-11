@@ -25,6 +25,10 @@ const ModalController = dynamic(() => import("../features/modals/ModalController
   ssr: false,
 });
 
+const DarkVeil = dynamic(() => import("src/components/DarkVeil").then(m => m.DarkVeil), {
+  ssr: false,
+});
+
 const GraphView = dynamic(
   () => import("../features/editor/views/GraphView").then(c => c.GraphView),
   {
@@ -78,7 +82,18 @@ const WidgetPage = () => {
     <ThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>
       <Head>{generateNextSeo({ noindex: true, nofollow: true })}</Head>
       <ModalController />
-      <GraphView isWidget />
+      <div style={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
+        {theme === "dark" && (
+          <DarkVeil
+            speed={0.4}
+            hueShift={120}
+            noiseIntensity={0.015}
+            scanlineIntensity={0.05}
+            warpAmount={0.15}
+          />
+        )}
+        <GraphView isWidget />
+      </div>
     </ThemeProvider>
   );
 };

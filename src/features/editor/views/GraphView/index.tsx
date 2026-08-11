@@ -37,6 +37,15 @@ const StyledEditorWrapper = styled.div<{
     background-position: 0 0;
   `};
 
+  ${({ $widget, theme }) =>
+    $widget &&
+    `
+    background-color: transparent;
+    background-image:
+      radial-gradient(${theme.BACKGROUND_PRIMARY === "#FFFFFF" ? "rgba(0, 0, 0, 0.08)" : "rgba(255, 255, 255, 0.12)"} 1px, transparent 1px);
+    background-size: 20px 20px;
+  `};
+
   .jsoncrack-space {
     cursor: url("/assets/cursor.svg"), auto;
   }
