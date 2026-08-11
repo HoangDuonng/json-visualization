@@ -35,6 +35,10 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <ColorSchemeScript />
+          <link rel="icon" href="/favicon.ico" sizes="48x48" />
+          <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png" />
+          <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link
