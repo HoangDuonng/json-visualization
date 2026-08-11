@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[16280],{16280:(e,s,n)=>{n.r(s),n.d(s,{WorkerUrl:()=>r}),n(92115);let r=new URL("file:///home/runner/work/Json_Visualization/Json_Visualization/src/jsondraw/engine/subset/subset-worker.chunk.ts")}}]);
-//# sourceMappingURL=16280.ab07ee3961ca9130.js.map
