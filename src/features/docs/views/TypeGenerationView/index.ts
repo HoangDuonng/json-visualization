@@ -1,0 +1,1 @@
+export { TypeGenerationView } from "./TypeGenerationView";

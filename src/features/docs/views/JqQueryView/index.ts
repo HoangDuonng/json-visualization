@@ -1,0 +1,1 @@
+export { JqQueryView } from "./JqQueryView";
