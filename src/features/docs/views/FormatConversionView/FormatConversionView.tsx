@@ -1,11 +1,7 @@
 import React from "react";
 import { Paper, SimpleGrid, Table, Text, Title } from "@mantine/core";
 import { CodeBlock } from "src/components/CodeBlock";
-import {
-  StyledContentBody,
-  StyledInlineCode,
-  StyledLink,
-} from "src/features/docs/components/DocPrimitives/styles";
+import { StyledContentBody, StyledLink } from "src/features/docs/components/DocPrimitives/styles";
 import { DocsLayout } from "src/features/docs/components/DocsLayout";
 import { useDocsTranslation } from "src/features/docs/hooks/useDocsTranslation";
 
@@ -108,9 +104,7 @@ export const FormatConversionView: React.FC = () => {
           </Title>
           <Text component="div">
             {t("formatConversion.method2Step1")}{" "}
-            <StyledLink href={getLocalizedLink("/converter/json-to-yaml")}>
-              JSON to YAML
-            </StyledLink>
+            <StyledLink href={getLocalizedLink("/converter/json-to-yaml")}>JSON to YAML</StyledLink>
             ).
             <br />
             {t("formatConversion.method2Step2")}
@@ -191,13 +185,15 @@ export const FormatConversionView: React.FC = () => {
             {t("formatConversion.inputLabel")} (JSON)
           </Text>
           <CodeBlock
-            code={`{\n  "name": "JSON Viz",\n  "features": ["Graph", "Tree", "Converter"],\n  "active": true\n}`}
+            code={
+              '{\n  "name": "JSON Viz",\n  "features": ["Graph", "Tree", "Converter"],\n  "active": true\n}'
+            }
           />
           <Text size="xs" fw={600} c="dimmed" mt="xs">
             {t("formatConversion.outputLabel")} (YAML)
           </Text>
           <CodeBlock
-            code={`name: JSON Viz\nfeatures:\n  - Graph\n  - Tree\n  - Converter\nactive: true`}
+            code={"name: JSON Viz\nfeatures:\n  - Graph\n  - Tree\n  - Converter\nactive: true"}
           />
 
           <Title order={3} size="h4" mt="lg">
@@ -206,12 +202,14 @@ export const FormatConversionView: React.FC = () => {
           <Text size="xs" fw={600} c="dimmed">
             {t("formatConversion.inputLabel")} (JSON)
           </Text>
-          <CodeBlock code={`{\n  "user": {\n    "name": "Alex",\n    "role": "admin"\n  }\n}`} />
+          <CodeBlock code={'{\n  "user": {\n    "name": "Alex",\n    "role": "admin"\n  }\n}'} />
           <Text size="xs" fw={600} c="dimmed" mt="xs">
             {t("formatConversion.outputLabel")} (XML)
           </Text>
           <CodeBlock
-            code={`<?xml version="1.0" encoding="UTF-8"?>\n<user>\n  <name>Alex</name>\n  <role>admin</role>\n</user>`}
+            code={
+              '<?xml version="1.0" encoding="UTF-8"?>\n<user>\n  <name>Alex</name>\n  <role>admin</role>\n</user>'
+            }
           />
         </StyledContentBody>
       </Paper>

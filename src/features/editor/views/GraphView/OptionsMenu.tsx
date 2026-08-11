@@ -1,15 +1,15 @@
 import React from "react";
-import { ActionIcon, Button, Flex, Menu, Text } from "@mantine/core";
+import { ActionIcon, Button, Menu } from "@mantine/core";
 import { useHotkeys } from "@mantine/hooks";
 import styled from "styled-components";
 import { event as gaEvent } from "nextjs-google-analytics";
 import { BsCheck2 } from "react-icons/bs";
-import { LuChevronRight, LuImageDown, LuMenu, LuUpload, LuDownload } from "react-icons/lu";
+import { LuChevronRight, LuDownload, LuImageDown, LuMenu, LuUpload } from "react-icons/lu";
 import { TiFlowMerge } from "react-icons/ti";
-import useConfig from "../../../../store/useConfig";
-import useFile from "../../../../store/useFile";
-import { useModal } from "../../../../store/useModal";
-import type { LayoutDirection } from "../../../../types/graph";
+import useConfig from "src/store/useConfig";
+import useFile from "src/store/useFile";
+import { useModal } from "src/store/useModal";
+import type { LayoutDirection } from "src/types/graph";
 import useGraph from "./stores/useGraph";
 
 const StyledFlowIcon = styled(TiFlowMerge)<{ rotate: number }>`
@@ -100,97 +100,76 @@ export const OptionsMenu = () => {
 
   return (
     <StyledOptions>
-      <Menu withArrow>
+      <Menu shadow="md" width={200} position="bottom-start">
         <Menu.Target>
-          <ActionIcon aria-label="actions" size="lg" color="gray" variant="light">
-            <LuMenu size="18" />
-          </ActionIcon>
+          <Button
+            leftSection={<LuMenu size={18} />}
+            variant="default"
+            size="xs"
+            fw={500}
+            aria-label="Options"
+          >
+            Menu
+          </Button>
         </Menu.Target>
+
         <Menu.Dropdown>
           <Menu.Item
-            fz={12}
-            leftSection={<LuUpload color="gray" />}
+            leftSection={<LuUpload size={14} />}
             onClick={() => setVisible("ImportModal", true)}
           >
-            Import data
+            Import
           </Menu.Item>
-          <Menu.Item fz={12} leftSection={<LuDownload color="gray" />} onClick={handleSave}>
-            Export JSON
+          <Menu.Item leftSection={<LuDownload size={14} />} onClick={handleSave}>
+            Download
           </Menu.Item>
           <Menu.Item
-            leftSection={<LuImageDown color="gray" />}
+            leftSection={<LuImageDown size={14} />}
             onClick={() => setVisible("DownloadModal", true)}
           >
-            <Flex fz="xs" justify="space-between" gap="md">
-              <Text fz="xs">Export as image</Text>
-              <Text ml="md" fz={10} c="dimmed">
-                {coreKey} + S
-              </Text>
-            </Flex>
+            Export Image
           </Menu.Item>
-          <Menu.Item
-            fz={12}
-            onClick={() => {
-              toggleDirection();
-              gaEvent("rotate_layout", { label: direction });
-            }}
-            leftSection={<StyledFlowIcon rotate={rotateLayout(direction || "RIGHT")} />}
-            rightSection={
-              <Text ml="md" fz={10} c="dimmed">
-                {coreKey} Shift D
-              </Text>
-            }
-            closeMenuOnClick={false}
-          >
-            Rotate Layout
-          </Menu.Item>
+
           <Menu.Divider />
-          <Menu position="right" trigger="hover" offset={0}>
-            <Menu.Target>
-              <Button
-                variant="subtle"
-                size="xs"
-                color="text"
-                fullWidth
-                fw="400"
-                rightSection={<LuChevronRight />}
-                styles={{ root: { paddingInline: 11 }, inner: { justifyContent: "space-between" } }}
-              >
-                View Options
-              </Button>
-            </Menu.Target>
-            <Menu.Dropdown>
+
+          <Menu.Sub>
+            <Menu.Sub.Target>
+              <Menu.Item rightSection={<LuChevronRight size={14} />}>Preferences</Menu.Item>
+            </Menu.Sub.Target>
+
+            <Menu.Sub.Dropdown>
               <Menu.Item
-                leftSection={<BsCheck2 opacity={rulersEnabled ? 100 : 0} />}
-                onClick={() => {
-                  toggleRulers(!rulersEnabled);
-                  gaEvent("toggle_rulers", { label: rulersEnabled ? "on" : "off" });
-                }}
+                rightSection={gesturesEnabled && <BsCheck2 size={14} />}
+                onClick={() => toggleGestures(!gesturesEnabled)}
               >
-                <Text size="xs">Rulers</Text>
+                Trackpad Gestures
               </Menu.Item>
               <Menu.Item
-                leftSection={<BsCheck2 opacity={gesturesEnabled ? 100 : 0} />}
-                onClick={() => {
-                  toggleGestures(!gesturesEnabled);
-                  gaEvent("toggle_gestures", { label: gesturesEnabled ? "on" : "off" });
-                }}
+                rightSection={rulersEnabled && <BsCheck2 size={14} />}
+                onClick={() => toggleRulers(!rulersEnabled)}
               >
-                <Text size="xs">Zoom on Scroll</Text>
+                Show Rulers
               </Menu.Item>
               <Menu.Item
-                leftSection={<BsCheck2 opacity={imagePreviewEnabled ? 100 : 0} />}
-                onClick={() => {
-                  toggleImagePreview(!imagePreviewEnabled);
-                  gaEvent("toggle_image_preview", { label: imagePreviewEnabled ? "on" : "off" });
-                }}
+                rightSection={imagePreviewEnabled && <BsCheck2 size={14} />}
+                onClick={() => toggleImagePreview(!imagePreviewEnabled)}
               >
-                <Text size="xs">Image Link Preview</Text>
+                Image Nodes Preview
               </Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
+            </Menu.Sub.Dropdown>
+          </Menu.Sub>
         </Menu.Dropdown>
       </Menu>
+
+      <ActionIcon
+        variant="default"
+        size="md"
+        onClick={toggleDirection}
+        aria-label="Rotate Layout"
+        title={`Rotate Layout (${coreKey} + SHIFT + D)`}
+      >
+        <StyledFlowIcon rotate={rotateLayout(direction || "RIGHT")} size={16} />
+      </ActionIcon>
     </StyledOptions>
   );
 };

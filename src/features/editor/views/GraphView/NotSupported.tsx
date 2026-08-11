@@ -1,6 +1,6 @@
 import React from "react";
 import { Code, Overlay, Stack, Text } from "@mantine/core";
-import useConfig from "../../../../store/useConfig";
+import useConfig from "src/store/useConfig";
 
 export const NotSupported = () => {
   const darkmodeEnabled = useConfig(state => state.darkmodeEnabled);
