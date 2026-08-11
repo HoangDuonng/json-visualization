@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Accordion, Image } from "@mantine/core";
 import styled from "styled-components";
+import { BsFiletypeCsv, BsFiletypeJson, BsFiletypeXml, BsFiletypeYml } from "react-icons/bs";
 import Questions from "../../data/faq.json";
 import {
   PublicActions,
@@ -40,6 +41,19 @@ const StyledHeroAside = styled.aside`
     color: var(--public-text-muted);
     font-size: 0.9rem;
     line-height: 1.65;
+  }
+`;
+
+const StyledHeroVisual = styled.div`
+  margin-top: 1.25rem;
+  overflow: hidden;
+  border-radius: var(--public-radius-md);
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 `;
 
@@ -120,8 +134,9 @@ const StyledStoryList = styled.ol`
 
 const StyledStoryItem = styled.li`
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: 3rem minmax(0, 1fr) 14rem;
+  gap: 1.5rem;
+  align-items: center;
   padding-block: 1.75rem;
   border-top: 1px solid var(--public-border);
   counter-increment: story;
@@ -151,6 +166,27 @@ const StyledStoryItem = styled.li`
     color: var(--public-text-muted);
     font-size: 0.925rem;
     line-height: 1.65;
+  }
+
+  .step-visual {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 3rem minmax(0, 1fr);
+
+    .step-visual {
+      grid-column: 2 / -1;
+      max-width: 18rem;
+    }
   }
 `;
 
@@ -222,24 +258,90 @@ const StyledFormats = styled.div`
 `;
 
 const StyledFormat = styled.div`
-  min-height: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 15rem;
   padding: 1.25rem;
   border-right: 1px solid var(--public-border);
   border-bottom: 1px solid var(--public-border);
+  background: var(--public-surface);
+  transition:
+    background var(--public-motion),
+    border-color var(--public-motion);
+
+  &:hover {
+    background: var(--public-surface-raised, #ffffff);
+
+    .format-icon {
+      color: var(--public-accent);
+      transform: translateY(-2px);
+    }
+  }
+
+  .format-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
   strong {
     display: block;
     font-family: var(--public-font-mono);
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--public-text);
+  }
+
+  .format-icon {
+    color: var(--public-text-subtle);
+    transition:
+      color var(--public-motion),
+      transform var(--public-motion);
+  }
+
+  .format-code {
+    margin-block: 0.75rem;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    background: #f3f2ee;
+    border: 1px solid #d9d9d3;
+    font-family: var(--public-font-mono, monospace);
+    font-size: 0.685rem;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    color: #1a1a1a;
+    white-space: pre;
+    overflow: hidden;
+  }
+
+  .format-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
   }
 
   span {
     display: block;
-    margin-top: 4.5rem;
     color: var(--public-text-subtle);
     font-size: var(--public-type-meta);
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .format-link {
+    color: var(--public-accent);
+    font-size: 0.75rem;
+    font-weight: 650;
+    text-decoration: none;
+    transition: transform var(--public-motion);
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 
@@ -314,6 +416,9 @@ export const EditorialHome = () => {
                 Built for developers who need to understand unfamiliar payloads quickly. Your data
                 stays in the browser while you work.
               </p>
+              <StyledHeroVisual>
+                <Image src="/assets/bf2-image.png" alt="JSON Payload to Graph transformation" />
+              </StyledHeroVisual>
               <StyledMeta>
                 <dt>Input formats</dt>
                 <dd>4</dd>
@@ -360,18 +465,33 @@ export const EditorialHome = () => {
                   <h3>Bring data in</h3>
                   <p>Paste content, open a file, or load a URL in the visual editor.</p>
                 </div>
+                <Image
+                  src="/assets/step1-visual.png"
+                  alt="Bring data in step visual"
+                  className="step-visual"
+                />
               </StyledStoryItem>
               <StyledStoryItem>
                 <div>
                   <h3>Read relationships</h3>
                   <p>Navigate nested objects and arrays as a graph or compact tree.</p>
                 </div>
+                <Image
+                  src="/assets/step2-visual.png"
+                  alt="Read relationships step visual"
+                  className="step-visual"
+                />
               </StyledStoryItem>
               <StyledStoryItem>
                 <div>
                   <h3>Ship the result</h3>
                   <p>Export a diagram, convert formats, validate structure, or generate types.</p>
                 </div>
+                <Image
+                  src="/assets/step3-visual.png"
+                  alt="Ship the result step visual"
+                  className="step-visual"
+                />
               </StyledStoryItem>
             </StyledStoryList>
           </StyledEditorialGrid>
@@ -411,14 +531,49 @@ export const EditorialHome = () => {
             </StyledSectionIntro>
             <StyledFormats>
               {[
-                ["JSON", "APIs & payloads"],
-                ["YAML", "Configuration"],
-                ["XML", "Integrations"],
-                ["CSV", "Tabular exports"],
-              ].map(([format, use]) => (
-                <StyledFormat key={format}>
-                  <strong>{format}</strong>
-                  <span>{use}</span>
+                {
+                  name: "JSON",
+                  use: "APIs & payloads",
+                  Icon: BsFiletypeJson,
+                  href: "/converter/json-to-yaml",
+                  code: '{\n  "id": 104,\n  "ok": true\n}',
+                },
+                {
+                  name: "YAML",
+                  use: "Configuration",
+                  Icon: BsFiletypeYml,
+                  href: "/converter/yaml-to-json",
+                  code: "id: 104\nok: true",
+                },
+                {
+                  name: "XML",
+                  use: "Integrations",
+                  Icon: BsFiletypeXml,
+                  href: "/converter/xml-to-json",
+                  code: '<user id="1">\n  <ok/>\n</user>',
+                },
+                {
+                  name: "CSV",
+                  use: "Tabular exports",
+                  Icon: BsFiletypeCsv,
+                  href: "/converter/csv-to-json",
+                  code: "id,status\n104,active",
+                },
+              ].map(({ name, use, Icon, href, code }) => (
+                <StyledFormat key={name}>
+                  <div className="format-header">
+                    <strong>{name}</strong>
+                    <Icon size={26} className="format-icon" />
+                  </div>
+                  <div className="format-code">
+                    <code>{code}</code>
+                  </div>
+                  <div className="format-footer">
+                    <span>{use}</span>
+                    <Link href={href} className="format-link">
+                      Convert →
+                    </Link>
+                  </div>
                 </StyledFormat>
               ))}
             </StyledFormats>
