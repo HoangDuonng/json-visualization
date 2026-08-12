@@ -194,6 +194,7 @@ export const JsonDrawView = () => {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const scrollToContent = React.useCallback((api: any, delay = 120) => {
