@@ -1,16 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
 import { Mesh, Program, Renderer, Triangle, Vec2 } from "ogl";
-
-const StyledCanvas = styled.canvas`
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-  pointer-events: none;
-  z-index: 0;
-`;
+import { StyledCanvas } from "./styles";
 
 const vertex = `
 attribute vec2 position;

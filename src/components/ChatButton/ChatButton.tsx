@@ -2,13 +2,16 @@ import React from "react";
 import { VscSparkle } from "react-icons/vsc";
 import { StyledChatButton } from "./styles";
 
-interface ChatButtonProps {
-  onClick?: () => void;
-}
+export type ChatButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const ChatButton = ({ onClick }: ChatButtonProps) => {
+export const ChatButton: React.FC<ChatButtonProps> = ({
+  onClick,
+  type = "button",
+  "aria-label": ariaLabel = "Open AI Assistant",
+  ...props
+}) => {
   return (
-    <StyledChatButton onClick={onClick} type="button" aria-label="Open AI Assistant">
+    <StyledChatButton onClick={onClick} type={type} aria-label={ariaLabel} {...props}>
       <VscSparkle size={15} />
       <span>Assistant</span>
     </StyledChatButton>

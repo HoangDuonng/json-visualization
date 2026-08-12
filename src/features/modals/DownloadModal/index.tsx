@@ -63,7 +63,7 @@ function downloadURI(uri: string, name: string) {
 }
 
 const getExportElement = () =>
-  (document.querySelector(".jsoncrack-canvas") as HTMLElement | null) ??
+  (document.querySelector(".jsonviz-canvas") as HTMLElement | null) ??
   (document.querySelector("svg[id*='ref']") as HTMLElement | null);
 
 export const DownloadModal = ({ opened, onClose }: ModalProps) => {

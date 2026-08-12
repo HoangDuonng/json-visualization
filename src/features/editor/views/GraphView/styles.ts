@@ -29,7 +29,7 @@ export const StyledEditorWrapper = styled.div<{
     background-size: 20px 20px;
   `};
 
-  .jsoncrack-space {
+  .jsonviz-space {
     cursor: url("/assets/cursor.svg"), auto;
   }
 

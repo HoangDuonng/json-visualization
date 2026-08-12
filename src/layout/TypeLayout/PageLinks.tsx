@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { formats, TypeLanguage, typeOptions } from "../../constants/enumData";
+import { formats, TypeLanguage, typeOptions } from "src/constants/enumData";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -98,7 +98,7 @@ const programmingLanguages = typeOptions
 
 const groupedLanguages = mapLanguagesToProgramming(languages, programmingLanguages);
 
-export const PageLinks = () => {
+export const PageLinks: React.FC = () => {
   return (
     <>
       <StyledHeader>

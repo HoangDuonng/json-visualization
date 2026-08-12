@@ -1,7 +1,7 @@
 services:
-  jsoncrack:
-    image: jsoncrack
-    container_name: jsoncrack
+  jsonviz:
+    image: jsonviz
+    container_name: jsonviz
     build: 
       context: .
       dockerfile: Dockerfile

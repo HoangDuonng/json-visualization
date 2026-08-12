@@ -8,7 +8,7 @@ import { AiOutlineFullscreen, AiOutlineFullscreenExit, AiOutlineLayout } from "r
 import { FaGithub } from "react-icons/fa6";
 import { toast } from "sonner";
 import { ViewMode } from "../../../constants/enumData";
-import { JSONCrackLogo } from "../../../layout/JsonCrackLogo";
+import { JSONVizLogo } from "../../../layout/JsonVizLogo";
 import useGraph from "../views/GraphView/stores/useGraph";
 import { ThemeToggle } from "./ThemeToggle";
 import { ToolsMenu } from "./ToolsMenu";
@@ -89,7 +89,7 @@ export const Toolbar = () => {
       <StyledToolbarGroup gap="xs" justify="left" w="100%">
         <StyledBrand>
           <Flex gap="xs" align="center" justify="center">
-            <JSONCrackLogo fontSize="14px" />
+            <JSONVizLogo fontSize="14px" />
           </Flex>
         </StyledBrand>
         <StyledToolElement title="Editor" $highlight={!isDrawView} onClick={handleEditorClick}>

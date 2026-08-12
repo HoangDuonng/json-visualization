@@ -48,7 +48,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ isWidget }) => {
 
   return (
     <Canvas
-      className="jsoncrack-canvas"
+      className="jsonviz-canvas"
       onLayoutChange={onLayoutChange}
       node={p => <CustomNode {...p} />}
       edge={p => <CustomEdge {...p} />}

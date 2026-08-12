@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { formats } from "../../constants/enumData";
+import { formats } from "src/constants/enumData";
 
 const StyledHeader = styled.div`
   display: flex;
@@ -76,7 +76,7 @@ const StyledLink = styled(Link)`
 const languages = formats.map(format => format.label);
 
 function groupCombinations(array: string[]): Record<string, string[]> {
-  const grouped = {};
+  const grouped: Record<string, string[]> = {};
   array.forEach(from => {
     const targets = array.filter(to => to !== from);
     grouped[from] = targets;
@@ -86,7 +86,7 @@ function groupCombinations(array: string[]): Record<string, string[]> {
 
 const groupedLanguages = groupCombinations(languages);
 
-export const PageLinks = () => {
+export const PageLinks: React.FC = () => {
   return (
     <>
       <StyledHeader>
