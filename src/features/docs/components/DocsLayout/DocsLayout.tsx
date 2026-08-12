@@ -65,9 +65,14 @@ export const DocsLayout: React.FC<DocsLayoutProps> = ({
       <StyledDocsContainer $narrow>
         <Stack gap="xl">
           <div
-            style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+              gap: "1.5rem",
+            }}
           >
-            <div>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <Title order={1} c="dark" mb="sm">
                 {title}
               </Title>
@@ -75,7 +80,9 @@ export const DocsLayout: React.FC<DocsLayoutProps> = ({
                 {subtitle}
               </Text>
             </div>
-            <LanguageSwitcher />
+            <div style={{ flexShrink: 0 }}>
+              <LanguageSwitcher />
+            </div>
           </div>
 
           {alertText && (
