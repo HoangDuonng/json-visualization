@@ -1,0 +1,2 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[37327],{70485:(t,_,e)=>{"use strict";e.r(_),e.d(_,{default:()=>n});var s=e(33499);e(65235);var p=e(7934),r=e(49677);let n=()=>(0,s.jsx)(r.a,{from:p.o5.JSON,to:p.R9.TypeScript})},98332:(t,_,e)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/type/json-to-typescript",function(){return e(70485)}])}},t=>{t.O(0,[10607,79862,91412,43765,16080,49677,90636,46593,38792],()=>t(t.s=98332)),_N_E=t.O()}]);
+//# sourceMappingURL=json-to-typescript-4c483a2f89e2bb12.js.map

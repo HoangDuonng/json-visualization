@@ -1,0 +1,2 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[41605],{36231:(_,t,n)=>{"use strict";n.r(t),n.d(t,{default:()=>u});var o=n(33499);n(65235);var e=n(7934),s=n(49677);let u=()=>(0,o.jsx)(s.a,{from:e.o5.JSON,to:e.R9.Kotlin})},77248:(_,t,n)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/type/json-to-kotlin",function(){return n(36231)}])}},_=>{_.O(0,[10607,79862,91412,43765,16080,49677,90636,46593,38792],()=>_(_.s=77248)),_N_E=_.O()}]);
+//# sourceMappingURL=json-to-kotlin-e99b43dd6cd89694.js.map

@@ -1,2 +1,0 @@
-(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[82775],{33469:(_,e,o)=>{"use strict";o.r(e),o.d(e,{default:()=>n});var t=o(33499);o(65235);var s=o(7934),u=o(49677);let n=()=>(0,t.jsx)(u.a,{from:s.o5.XML,to:s.R9.Go})},96882:(_,e,o)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/type/xml-to-go",function(){return o(33469)}])}},_=>{_.O(0,[10607,79862,91412,43765,21718,49677,90636,46593,38792],()=>_(_.s=96882)),_N_E=_.O()}]);
-//# sourceMappingURL=xml-to-go-74eecff02f8aa019.js.map

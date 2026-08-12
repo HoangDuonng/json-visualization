@@ -1,0 +1,2 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[25792],{8060:(_,s,t)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/type/csv-to-rust",function(){return t(87610)}])},87610:(_,s,t)=>{"use strict";t.r(s),t.d(s,{default:()=>n});var u=t(33499);t(65235);var e=t(7934),r=t(49677);let n=()=>(0,u.jsx)(r.a,{from:e.o5.CSV,to:e.R9.Rust})}},_=>{_.O(0,[10607,79862,91412,43765,16080,49677,90636,46593,38792],()=>_(_.s=8060)),_N_E=_.O()}]);
+//# sourceMappingURL=csv-to-rust-2708f1f8718806c1.js.map

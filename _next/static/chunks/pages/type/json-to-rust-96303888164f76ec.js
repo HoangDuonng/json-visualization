@@ -1,0 +1,2 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[47004],{9956:(_,s,t)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/type/json-to-rust",function(){return t(63038)}])},63038:(_,s,t)=>{"use strict";t.r(s),t.d(s,{default:()=>o});var u=t(33499);t(65235);var e=t(7934),n=t(49677);let o=()=>(0,u.jsx)(n.a,{from:e.o5.JSON,to:e.R9.Rust})}},_=>{_.O(0,[10607,79862,91412,43765,16080,49677,90636,46593,38792],()=>_(_.s=9956)),_N_E=_.O()}]);
+//# sourceMappingURL=json-to-rust-96303888164f76ec.js.map
