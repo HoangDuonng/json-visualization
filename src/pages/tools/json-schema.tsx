@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import { Flex, Paper } from "@mantine/core";
 import styled from "styled-components";
 import { Editor, type OnMount } from "@monaco-editor/react";
-import { JSONSchemaFaker } from "json-schema-faker";
 import { generateNextSeo } from "next-seo/pages";
 import { LuCheck, LuCircleX, LuCopy, LuCopyCheck } from "react-icons/lu";
 import { toast } from "sonner";
-import { ArrowButton } from "../../components/ArrowButton";
-import { GenerateButton } from "../../components/GenerateButton";
-import { Tooltip } from "../../components/Tooltip";
-import { FileFormat, TypeLanguage } from "../../constants/enumData";
-import { MONO_FONT_FAMILY } from "../../constants/globalStyle";
-import { SEO } from "../../constants/seo";
-import { editorOptions } from "../../layout/ConverterLayout/options";
-import Layout from "../../layout/PageLayout";
+import { ArrowButton } from "src/components/ArrowButton";
+import { GenerateButton } from "src/components/GenerateButton";
+import { Tooltip } from "src/components/Tooltip";
+import { FileFormat, TypeLanguage } from "src/constants/enumData";
+import { MONO_FONT_FAMILY } from "src/constants/globalStyle";
+import { SEO } from "src/constants/seo";
+import { editorOptions } from "src/layout/ConverterLayout/options";
+import Layout from "src/layout/PageLayout";
 import {
   PublicContainer,
   PublicEyebrow,
@@ -22,9 +21,9 @@ import {
   PublicToolGrid,
   PublicToolHeader,
   PublicToolPanelHeader,
-} from "../../layout/PageLayout/PublicPage";
-import { generateType } from "../../lib/utils/generateType";
-import { jsonToContent } from "../../lib/utils/jsonAdapter";
+} from "src/layout/PageLayout/PublicPage";
+import { generateType } from "src/lib/utils/generateType";
+import { jsonToContent } from "src/lib/utils/jsonAdapter";
 
 const StyledEditorWrapper = styled.div`
   * {
@@ -86,14 +85,14 @@ const StyledActions = styled.div`
   padding-block: 1.5rem 0;
 `;
 
-const JSONSchemaTool = () => {
-  const monacoRef = React.useRef<Parameters<OnMount>[1] | null>(null);
-  const [jsonError, setJsonError] = React.useState(false);
-  const [jsonSchemaError, setJsonSchemaError] = React.useState(false);
-  const [json, setJson] = React.useState("");
-  const [jsonSchema, setJsonSchema] = React.useState("");
-  const [copiedJson, setCopiedJson] = React.useState(false);
-  const [copiedSchema, setCopiedSchema] = React.useState(false);
+const JSONSchemaTool: React.FC = () => {
+  const monacoRef = useRef<Parameters<OnMount>[1] | null>(null);
+  const [jsonError, setJsonError] = useState(false);
+  const [jsonSchemaError, setJsonSchemaError] = useState(false);
+  const [json, setJson] = useState("");
+  const [jsonSchema, setJsonSchema] = useState("");
+  const [copiedJson, setCopiedJson] = useState(false);
+  const [copiedSchema, setCopiedSchema] = useState(false);
 
   const handleCopy = (content: string, setCopied: (v: boolean) => void) => {
     navigator.clipboard.writeText(content);
@@ -102,7 +101,7 @@ const JSONSchemaTool = () => {
     toast.success("Copied to clipboard!");
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     monacoRef.current?.languages.json.jsonDefaults.setDiagnosticsOptions({
       validate: true,
       allowComments: true,
@@ -125,8 +124,8 @@ const JSONSchemaTool = () => {
       return;
     }
     try {
-      const jsonSchema = await generateType(json, FileFormat.JSON, TypeLanguage.JSON_SCHEMA);
-      setJsonSchema(jsonSchema);
+      const resultSchema = await generateType(json, FileFormat.JSON, TypeLanguage.JSON_SCHEMA);
+      setJsonSchema(resultSchema);
       toast.success("JSON Schema generated successfully!");
     } catch {
       toast.error("Failed to generate JSON Schema!");
@@ -142,6 +141,7 @@ const JSONSchemaTool = () => {
       if (!jsonSchema || !jsonSchema.trim()) {
         return;
       }
+      const { JSONSchemaFaker } = await import("json-schema-faker");
       const randomJson = await JSONSchemaFaker.resolve(JSON.parse(jsonSchema));
       const contents = await jsonToContent(JSON.stringify(randomJson, null, 2), FileFormat.JSON);
       setJson(contents);
