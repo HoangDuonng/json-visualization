@@ -6,7 +6,7 @@ import { VscSparkle } from "react-icons/vsc";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
-import { PlaceholdersAndVanishInput } from "../ui/placeholders-and-vanish-input";
+import { ChatInput } from "../ChatInput";
 import {
   StyledAvatar,
   StyledChatContainer,
@@ -270,7 +270,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ opened, onClose }) => {
           </StyledMessageList>
         </ScrollArea>
 
-        <PlaceholdersAndVanishInput
+        <ChatInput
           placeholders={placeholders}
           value={input}
           onChange={e => setInput(e.target.value)}
