@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import { Flex } from "@mantine/core";
-import styled from "styled-components";
 import { Editor } from "@monaco-editor/react";
 import { generateNextSeo } from "next-seo/pages";
 import { LuCheck, LuCircleX, LuCopy, LuCopyCheck } from "react-icons/lu";
 import { toast } from "sonner";
 import { ArrowButton } from "src/components/ArrowButton";
 import { type FileFormat, formats } from "src/constants/enumData";
-import { MONO_FONT_FAMILY } from "src/constants/globalStyle";
 import { SEO } from "src/constants/seo";
 import { contentToJson, jsonToContent } from "src/lib/utils/jsonAdapter";
 import Layout from "../PageLayout";
@@ -23,37 +21,7 @@ import {
 } from "../PageLayout/PublicPage";
 import { PageLinks } from "./PageLinks";
 import { editorOptions } from "./options";
-
-const StyledEditorWrapper = styled.div`
-  * {
-    font-family: ${MONO_FONT_FAMILY} !important;
-  }
-`;
-
-const StyledCopyButton = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  color: #666;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: var(--public-text);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--public-accent);
-    outline-offset: 2px;
-  }
-`;
-
-const StyledToolFooter = styled.section`
-  padding-block: 1rem var(--public-section-space);
-  border-top: 1px solid var(--public-border);
-`;
+import { StyledCopyButton, StyledEditorWrapper, StyledToolFooter } from "./styles";
 
 export interface ToolPageProps {
   from: FileFormat;

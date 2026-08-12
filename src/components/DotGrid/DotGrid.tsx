@@ -1,26 +1,6 @@
-import React, { useRef, useEffect, useCallback, useMemo } from "react";
-import styled from "styled-components";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
-
-const StyledDotGrid = styled.section`
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-`;
-
-const StyledWrap = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
-
-const StyledCanvas = styled.canvas`
-  display: block;
-  width: 100%;
-  height: 100%;
-  pointer-events: auto;
-`;
+import { StyledCanvas, StyledDotGrid, StyledWrap } from "./styles";
 
 interface Dot {
   cx: number;

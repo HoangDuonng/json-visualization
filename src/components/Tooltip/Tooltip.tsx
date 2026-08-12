@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-
-const StyledTooltipWrapper = styled.div`
-  position: relative;
-  display: inline-block;
-`;
+import React, { useEffect, useState } from "react";
+import { StyledTooltipWrapper } from "./styles";
 
 export interface TooltipProps {
   children: React.ReactNode;
