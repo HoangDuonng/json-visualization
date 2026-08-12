@@ -8,11 +8,11 @@ import { IoBrushOutline, IoImages } from "react-icons/io5";
 import { MdOutlineFormatIndentIncrease, MdOutlineGeneratingTokens } from "react-icons/md";
 import { TbTransformFilled } from "react-icons/tb";
 import { VscJson } from "react-icons/vsc";
-import { ChatBot } from "../components/ChatBot";
-import { ChatButton } from "../components/ChatButton";
-import { CodeBlock } from "../components/CodeBlock";
-import { LanguageSwitcher } from "../components/LanguageSwitcher";
-import { SEO } from "../constants/seo";
+import { ChatBot } from "src/components/ChatBot";
+import { ChatButton } from "src/components/ChatButton";
+import { CodeBlock } from "src/components/CodeBlock";
+import { LanguageSwitcher } from "src/components/LanguageSwitcher";
+import { SEO } from "src/constants/seo";
 import {
   sampleCsv,
   sampleJson,
@@ -21,11 +21,11 @@ import {
   StyledDocsPaper,
   StyledFeatureCard,
   StyledLink,
-} from "../features/docs";
-import { useTranslation } from "../i18n";
-import Layout from "../layout/PageLayout";
+} from "src/features/docs";
+import { useTranslation } from "src/i18n";
+import Layout from "src/layout/PageLayout";
 
-const DocsPage = () => {
+const DocsPage: React.FC = () => {
   const { t, locale } = useTranslation("docs");
   const [chatOpened, setChatOpened] = useState(false);
 

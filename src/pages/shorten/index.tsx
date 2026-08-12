@@ -3,7 +3,7 @@ import Head from "next/head";
 import { generateNextSeo } from "next-seo/pages";
 import { IoTimeOutline } from "react-icons/io5";
 import { toast } from "sonner";
-import { buildSeo } from "../constants/seo";
+import { buildSeo } from "src/constants/seo";
 import {
   getHistory,
   HistoryModal,
@@ -11,11 +11,11 @@ import {
   ShortenForm,
   StyledHistoryTrigger,
   type ShortenResult,
-} from "../features/shorten";
-import Layout from "../layout/PageLayout";
-import { PublicContainer, PublicEyebrow, PublicToolHeader } from "../layout/PageLayout/PublicPage";
+} from "src/features/shorten";
+import Layout from "src/layout/PageLayout";
+import { PublicContainer, PublicEyebrow, PublicToolHeader } from "src/layout/PageLayout/PublicPage";
 
-const ShortenPage = () => {
+const ShortenPage: React.FC = () => {
   const [history, setHistory] = useState<ShortenResult[]>(() => getHistory());
   const [historyOpened, setHistoryOpened] = useState(false);
 

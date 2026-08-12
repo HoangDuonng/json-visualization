@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import { Flex, Paper } from "@mantine/core";
-import styled from "styled-components";
+import { Flex } from "@mantine/core";
 import { Editor, type OnMount } from "@monaco-editor/react";
 import { generateNextSeo } from "next-seo/pages";
 import { LuCheck, LuCircleX, LuCopy, LuCopyCheck } from "react-icons/lu";
@@ -10,7 +9,6 @@ import { ArrowButton } from "src/components/ArrowButton";
 import { GenerateButton } from "src/components/GenerateButton";
 import { Tooltip } from "src/components/Tooltip";
 import { FileFormat, TypeLanguage } from "src/constants/enumData";
-import { MONO_FONT_FAMILY } from "src/constants/globalStyle";
 import { SEO } from "src/constants/seo";
 import { editorOptions } from "src/layout/ConverterLayout/options";
 import Layout from "src/layout/PageLayout";
@@ -24,66 +22,7 @@ import {
 } from "src/layout/PageLayout/PublicPage";
 import { generateType } from "src/lib/utils/generateType";
 import { jsonToContent } from "src/lib/utils/jsonAdapter";
-
-const StyledEditorWrapper = styled.div`
-  * {
-    font-family: ${MONO_FONT_FAMILY} !important;
-  }
-`;
-
-const StyledCopyButton = styled.button`
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  color: #666;
-  transition: color 0.2s ease;
-
-  &:hover {
-    color: #1a1a1a;
-  }
-`;
-
-const StyledPaper = styled(Paper)<any>`
-  min-width: 0;
-  overflow: hidden;
-  border: 1px solid var(--public-border-strong);
-  border-radius: var(--public-radius-md);
-  background: var(--public-surface);
-  transition: outline 0.3s ease;
-
-  &[data-tooltip] {
-    position: relative;
-  }
-
-  &[data-tooltip]::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(26, 26, 26, 0.95);
-    color: #fff;
-    padding: 16px 20px;
-    border-radius: var(--public-radius-sm);
-    font-size: 0.95rem;
-    white-space: normal;
-    max-width: 280px;
-    text-align: center;
-    z-index: 1000;
-    pointer-events: none;
-    font-family: inherit;
-  }
-`;
-
-const StyledActions = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  padding-block: 1.5rem 0;
-`;
+import { StyledActions, StyledCopyButton, StyledEditorWrapper, StyledPaper } from "./styles";
 
 const JSONSchemaTool: React.FC = () => {
   const monacoRef = useRef<Parameters<OnMount>[1] | null>(null);

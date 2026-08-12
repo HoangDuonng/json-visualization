@@ -1,44 +1,21 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import styled from "styled-components";
 import { get, ref } from "firebase/database";
 import { generateNextSeo } from "next-seo/pages";
-import { buildSeo } from "../constants/seo";
-import Layout from "../layout/PageLayout";
+import { buildSeo } from "src/constants/seo";
+import Layout from "src/layout/PageLayout";
 import {
   PublicActions,
   PublicContainer,
   PublicEyebrow,
   PublicPrimaryLink,
   PublicToolHeader,
-} from "../layout/PageLayout/PublicPage";
-import { getDb } from "../lib/db";
+} from "src/layout/PageLayout/PublicPage";
+import { getDb } from "src/lib/db";
+import { StyledIndicator, StyledStatus } from "./styles";
 
-const StyledStatus = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding-block: 2rem;
-  color: var(--public-text-muted);
-  font-size: var(--public-type-body);
-`;
-
-const StyledIndicator = styled.span`
-  width: 0.65rem;
-  height: 0.65rem;
-  border: 1px solid var(--public-accent);
-  border-radius: 50%;
-  animation: pulse 1.2s ease-in-out infinite;
-
-  @keyframes pulse {
-    50% {
-      background: var(--public-accent);
-    }
-  }
-`;
-
-const RedirectPage = () => {
+const RedirectPage: React.FC = () => {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const missingCode = router.isReady && !router.query.c;
