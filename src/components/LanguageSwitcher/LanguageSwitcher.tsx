@@ -1,7 +1,8 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Menu, Button } from "@mantine/core";
-import { locales, localeNames, localeFlags, useLocale, getLocalizedPath } from "../../i18n";
+import { Menu } from "@mantine/core";
+import { getLocalizedPath, localeFlags, localeNames, locales, useLocale } from "src/i18n";
+import { StyledLanguageButton } from "./styles";
 
 export const LanguageSwitcher: React.FC = () => {
   const router = useRouter();
@@ -13,11 +14,12 @@ export const LanguageSwitcher: React.FC = () => {
   };
 
   return (
-    <Menu shadow="md" width={200}>
+    <Menu shadow="md" width={180} position="bottom-end">
       <Menu.Target>
-        <Button variant="subtle" size="sm">
-          {localeFlags[currentLocale]} {localeNames[currentLocale]}
-        </Button>
+        <StyledLanguageButton variant="subtle" size="sm">
+          <span>{localeFlags[currentLocale]}</span>
+          <span>{localeNames[currentLocale]}</span>
+        </StyledLanguageButton>
       </Menu.Target>
 
       <Menu.Dropdown>
