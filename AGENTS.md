@@ -17,7 +17,7 @@ JSON Visualization is a Next.js 16 application for visualizing and manipulating 
 ### Development
 
 ```bash
-pnpm dev              # Start development server on http://localhost:3000
+pnpm dev              # Start development server on http://localhost:3979
 pnpm build            # Build for production
 pnpm start            # Start production server
 ```

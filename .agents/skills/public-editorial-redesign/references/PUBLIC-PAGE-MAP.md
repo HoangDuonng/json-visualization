@@ -18,15 +18,15 @@ These routes share editor state, canvas rendering, and code typography. Treat th
 
 ```text
 src/pages/index.tsx              -> /
-src/pages/docs.tsx               -> /docs
+src/pages/docs/index.tsx        -> /docs
 src/pages/docs/**                -> /docs/**
 src/pages/converter/**           -> /converter/**
 src/pages/type/**                -> /type/**
 src/pages/tools/**               -> /tools/**
-src/pages/shorten.tsx            -> /shorten
-src/pages/coming-soon.tsx        -> /coming-soon
+src/pages/shorten/index.tsx      -> /shorten
+src/pages/coming-soon/index.tsx  -> /coming-soon
 src/pages/legal/**               -> /legal/**
-src/pages/s.tsx                  -> /s
+src/pages/s/index.tsx            -> /s
 ```
 
 ## Shared public implementation
