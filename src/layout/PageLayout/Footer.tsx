@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { JSONCrackLogo } from "../JsonCrackLogo";
+import { JSONVizLogo } from "../JsonVizLogo";
 import { PublicContainer } from "./PublicPage";
 import {
   StyledFooter,
@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ hideGithubLink = false }) => {
       <PublicContainer $wide>
         <StyledFooterGrid>
           <StyledFooterLeft>
-            <JSONCrackLogo style={{ color: "#f5f4ef" }} />
+            <JSONVizLogo style={{ color: "#f5f4ef" }} />
             <p>
               Read, transform, and explain structured data with an open-source visual workspace.
             </p>

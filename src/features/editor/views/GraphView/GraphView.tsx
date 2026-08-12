@@ -31,14 +31,14 @@ export const GraphView: React.FC<GraphProps> = ({ isWidget = false }) => {
   const didInitialCenter = React.useRef(false);
 
   const callback = React.useCallback(() => {
-    const canvas = document.querySelector(".jsoncrack-canvas") as HTMLDivElement | null;
+    const canvas = document.querySelector(".jsonviz-canvas") as HTMLDivElement | null;
     canvas?.classList.add("dragging");
   }, []);
 
   const bindLongPress = useLongPress(callback, {
     threshold: 150,
     onFinish: () => {
-      const canvas = document.querySelector(".jsoncrack-canvas") as HTMLDivElement | null;
+      const canvas = document.querySelector(".jsonviz-canvas") as HTMLDivElement | null;
       canvas?.classList.remove("dragging");
     },
   });
@@ -114,7 +114,7 @@ export const GraphView: React.FC<GraphProps> = ({ isWidget = false }) => {
           onContextMenu={e => e.preventDefault()}
           treatTwoFingerTrackPadGesturesLikeTouch={gesturesEnabled}
           pollForElementResizing
-          className="jsoncrack-space"
+          className="jsonviz-space"
         >
           <GraphCanvas isWidget={isWidget} />
         </Space>

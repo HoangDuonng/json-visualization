@@ -1,5 +1,5 @@
 import React from "react";
-import { JSONCrackLogo } from "../JsonCrackLogo";
+import { JSONVizLogo } from "../JsonVizLogo";
 import { PublicContainer } from "./PublicPage";
 import {
   StyledActionLink,
@@ -15,7 +15,7 @@ export const Navbar: React.FC = () => {
     <StyledHeader>
       <PublicContainer $wide>
         <StyledNavbar>
-          <JSONCrackLogo fontSize="1.05rem" />
+          <JSONVizLogo fontSize="1.05rem" />
           <StyledNavLinks aria-label="Public navigation">
             <StyledNavLink href="/docs" prefetch={false}>
               Docs

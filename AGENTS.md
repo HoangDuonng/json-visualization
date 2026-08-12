@@ -94,7 +94,7 @@ import { isIframe } from "../lib/utils/helpers";
 
 ### Naming Conventions
 
-- **Components**: PascalCase (`Navbar`, `JSONCrackLogo`)
+- **Components**: PascalCase (`Navbar`, `JSONVizLogo`)
 - **Files**:
   - ComponentCase (`Navbar.tsx`, `HeroSection.tsx`)
   - Utilities: camelCase (`helpers.ts`, `search.ts`)

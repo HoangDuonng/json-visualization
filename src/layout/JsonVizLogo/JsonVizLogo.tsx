@@ -8,7 +8,7 @@ export interface LogoProps extends React.ComponentPropsWithoutRef<"div"> {
   hideText?: boolean;
 }
 
-export const JSONCrackLogo: React.FC<LogoProps> = ({
+export const JSONVizLogo: React.FC<LogoProps> = ({
   fontSize = "1.2rem",
   hideText,
   hideLogo,
@@ -35,4 +35,6 @@ export const JSONCrackLogo: React.FC<LogoProps> = ({
   );
 };
 
-export default JSONCrackLogo;
+export const JSONCrackLogo = JSONVizLogo;
+
+export default JSONVizLogo;
