@@ -19,7 +19,7 @@ You have three ways to add data:
 **Option A: Paste directly**
 
 1. Click in the text editor on the left
-2. Paste your JSON, YAML, CSV, XML, or TOML data
+2. Paste your JSON, YAML, CSV, or XML data
 3. The graph updates automatically
 
 **Option B: Upload a file**
