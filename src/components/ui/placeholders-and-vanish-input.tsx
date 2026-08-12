@@ -8,62 +8,65 @@ const StyledInputWrapper = styled.div`
 
 const StyledInput = styled.input`
   width: 100%;
-  padding: 12px 56px 12px 16px;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  font-size: 14px;
-  background: #ffffff;
-  color: #1a1a1a;
-  transition: all 0.3s ease;
-  box-shadow: 0 1px 2px rgba(17, 17, 17, 0.06);
+  padding: 0.75rem 3.25rem 0.75rem 1rem;
+  border: 1px solid var(--public-border-strong, #bfc0b9);
+  border-radius: var(--public-radius-md, 10px);
+  font-size: 0.875rem;
+  background: var(--public-surface-raised, #ffffff);
+  color: var(--public-text, #171816);
+  transition:
+    border-color var(--public-motion, 160ms ease),
+    box-shadow var(--public-motion, 160ms ease);
 
   &:focus {
     outline: none;
-    border-color: #111111;
-    box-shadow: 0 0 0 3px rgba(17, 17, 17, 0.08);
+    border-color: var(--public-accent, #236b4a);
+    box-shadow: 0 0 0 3px var(--public-accent-soft, #deeee5);
   }
 
   &::placeholder {
-    color: #999;
+    color: var(--public-text-subtle, #81847c);
   }
 `;
 
 const StyledSendButton = styled.button`
   position: absolute;
-  right: 8px;
+  right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  background: #f7c948;
+  background: var(--public-accent, #236b4a);
   border: none;
-  border-radius: 10px;
-  width: 36px;
-  height: 36px;
+  border-radius: var(--public-radius-sm, 5px);
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
-  color: #1a1a1a;
+  transition:
+    background-color var(--public-motion, 160ms ease),
+    transform var(--public-motion, 160ms ease);
+  color: var(--public-accent-contrast, #ffffff);
 
   &:hover:not(:disabled) {
-    background: #f3b400;
-    transform: translateY(-50%) scale(1.03);
+    background: var(--public-accent-hover, #19583c);
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 `;
 
 const StyledPlaceholder = styled.span<{ visible: boolean }>`
   position: absolute;
-  left: 16px;
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #999;
+  color: var(--public-text-subtle, #81847c);
+  font-size: 0.875rem;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--public-motion, 160ms ease);
   opacity: ${props => (props.visible ? 1 : 0)};
 `;
 
@@ -76,6 +79,7 @@ interface PlaceholdersAndVanishInputProps {
   loading?: boolean;
   sendIcon?: React.ReactNode;
   stopIcon?: React.ReactNode;
+  autoFocus?: boolean;
 }
 
 export const PlaceholdersAndVanishInput: React.FC<PlaceholdersAndVanishInputProps> = ({
@@ -87,8 +91,10 @@ export const PlaceholdersAndVanishInput: React.FC<PlaceholdersAndVanishInputProp
   loading,
   sendIcon,
   stopIcon,
+  autoFocus = true,
 }) => {
   const [currentPlaceholder, setCurrentPlaceholder] = React.useState(0);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   React.useEffect(() => {
     if (value) return;
@@ -100,16 +106,36 @@ export const PlaceholdersAndVanishInput: React.FC<PlaceholdersAndVanishInputProp
     return () => clearInterval(interval);
   }, [placeholders.length, value]);
 
+  // Keep focus on input automatically when component mounts, after submit, or when loading completes
+  React.useEffect(() => {
+    if (autoFocus || !loading) {
+      const timer = setTimeout(() => {
+        inputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [autoFocus, loading]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    onSubmit(e);
+    requestAnimationFrame(() => {
+      inputRef.current?.focus();
+    });
+  };
+
   return (
-    <form onSubmit={onSubmit} style={{ width: "100%" }}>
+    <form onSubmit={handleSubmit} style={{ width: "100%" }}>
       <StyledInputWrapper>
         <StyledPlaceholder visible={!value}>{placeholders[currentPlaceholder]}</StyledPlaceholder>
         <StyledInput
+          ref={inputRef}
           type="text"
           value={value}
           onChange={onChange}
           disabled={disabled}
           placeholder=" "
+          autoFocus={autoFocus}
         />
         <StyledSendButton type="submit" disabled={!value.trim() && !loading}>
           {loading ? stopIcon : sendIcon}
