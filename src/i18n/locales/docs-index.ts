@@ -240,4 +240,12 @@ export const docsIndexTranslations = {
     en: "Download visualizations as PNG, JPEG, or SVG images",
     vi: "Tải xuống trực quan hóa dưới dạng hình ảnh PNG, JPEG hoặc SVG",
   },
+  embedWidgetTitle: {
+    en: "Embed Widget",
+    vi: "Nhúng Widget",
+  },
+  embedWidgetDesc: {
+    en: "Embed interactive JSON graphs into any website via iframe and postMessage API",
+    vi: "Nhúng đồ thị JSON tương tác vào website bất kỳ qua iframe và postMessage API",
+  },
 };

@@ -1,5 +1,6 @@
 import type { Locale } from "../config";
 import { docsIndexTranslations } from "./docs-index";
+import { embedWidgetTranslations } from "./docs/embed-widget";
 import { exportImageTranslations } from "./docs/export-image";
 import { formatConversionTranslations } from "./docs/format-conversion";
 import { formatValidateTranslations } from "./docs/format-validate";
@@ -104,6 +105,9 @@ export const docsTranslations = {
 
   // ==================== EXPORT IMAGE ====================
   exportImage: exportImageTranslations,
+
+  // ==================== EMBED WIDGET ====================
+  embedWidget: embedWidgetTranslations,
 };
 
 export function getDocsTranslation(key: string, locale: Locale): string {
