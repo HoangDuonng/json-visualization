@@ -12,8 +12,8 @@ import {
   PublicPrimaryLink,
   PublicToolHeader,
 } from "src/layout/PageLayout/PublicPage";
+import { StyledIndicator, StyledStatus } from "src/layout/PageLayout/shortenRedirectStyles";
 import { getDb } from "src/lib/db";
-import { StyledIndicator, StyledStatus } from "./styles";
 
 const RedirectPage: React.FC = () => {
   const router = useRouter();

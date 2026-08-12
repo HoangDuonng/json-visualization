@@ -20,9 +20,14 @@ import {
   PublicToolHeader,
   PublicToolPanelHeader,
 } from "src/layout/PageLayout/PublicPage";
+import {
+  StyledActions,
+  StyledCopyButton,
+  StyledEditorWrapper,
+  StyledPaper,
+} from "src/layout/PageLayout/toolsStyles";
 import { generateType } from "src/lib/utils/generateType";
 import { jsonToContent } from "src/lib/utils/jsonAdapter";
-import { StyledActions, StyledCopyButton, StyledEditorWrapper, StyledPaper } from "./styles";
 
 const JSONSchemaTool: React.FC = () => {
   const monacoRef = useRef<Parameters<OnMount>[1] | null>(null);

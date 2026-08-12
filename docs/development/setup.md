@@ -86,7 +86,7 @@ NEXT_PUBLIC_NODE_LIMIT=1000
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3979](http://localhost:3979)
 
 ## Development Commands
 

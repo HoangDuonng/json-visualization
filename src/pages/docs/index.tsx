@@ -97,6 +97,13 @@ const DocsPage: React.FC = () => {
       color: "#236b4a",
       link: getLocalizedLink("/docs/export-image"),
     },
+    {
+      title: t("index.embedWidgetTitle"),
+      description: t("index.embedWidgetDesc"),
+      icon: <FaToolbox size={24} />,
+      color: "#236b4a",
+      link: getLocalizedLink("/docs/embed-widget"),
+    },
   ];
 
   const faqs = [

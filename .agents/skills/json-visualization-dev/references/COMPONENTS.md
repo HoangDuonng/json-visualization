@@ -177,6 +177,23 @@ import { RippleGrid } from "src/components/RippleGrid";
 - Interactive on hover
 - Canvas-based
 
+### SplashCursor
+
+**File**: `src/components/Cursor/Cursor.tsx` (modularized with `shaders.ts` and `webgl.ts`)
+
+Interactive WebGL fluid simulation cursor effect.
+
+```typescript
+import SplashCursor from "src/components/Cursor/Cursor";
+
+<SplashCursor />
+```
+
+**Features**:
+- 2D Navier-Stokes fluid animation
+- Separated GLSL shader sources in `shaders.ts`
+- WebGL helpers and Framebuffer FBO utilities in `webgl.ts`
+
 ### GlassSurface
 
 **File**: `src/components/GlassSurface/GlassSurface.tsx`
@@ -219,16 +236,16 @@ import { Tooltip } from "src/components/Tooltip";
 - `children`: Element to attach tooltip to
 - All Mantine Tooltip props
 
-### JsonCrackLogo
+### JsonVizLogo
 
-**File**: `src/layout/JsonCrackLogo.tsx`
+**File**: `src/layout/JsonVizLogo/JsonVizLogo.tsx`
 
 Animated logo component.
 
 ```typescript
-import JsonCrackLogo from "src/layout/JsonCrackLogo";
+import { JsonVizLogo } from "src/layout/JsonVizLogo";
 
-<JsonCrackLogo />
+<JsonVizLogo />
 ```
 
 **Features**:

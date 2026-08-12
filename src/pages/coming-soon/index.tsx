@@ -20,7 +20,7 @@ import {
   StyledHighlights,
   StyledHighlightText,
   StyledHighlightTitle,
-} from "./styles";
+} from "src/layout/PageLayout/comingSoonStyles";
 
 const ComingSoon: React.FC = () => {
   return (
