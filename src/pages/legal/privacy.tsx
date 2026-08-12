@@ -5,7 +5,7 @@ import { SEO } from "src/constants/seo";
 import privacy from "src/data/privacy.json";
 import Layout from "src/layout/PageLayout";
 import { PublicContainer, PublicEyebrow, PublicPageHeader } from "src/layout/PageLayout/PublicPage";
-import { StyledDocument, StyledTitle, StyledUpdated } from "./styles";
+import { StyledDocument, StyledTitle, StyledUpdated } from "src/layout/PageLayout/legalStyles";
 
 const Privacy: React.FC = () => {
   return (
