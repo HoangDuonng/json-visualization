@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 const StyledTooltipWrapper = styled.div`
@@ -6,16 +6,16 @@ const StyledTooltipWrapper = styled.div`
   display: inline-block;
 `;
 
-interface TooltipProps {
+export interface TooltipProps {
   children: React.ReactNode;
   content: string;
   targetId?: string;
 }
 
 export const Tooltip: React.FC<TooltipProps> = ({ children, content, targetId }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!targetId) return;
 
     const target = document.getElementById(targetId);

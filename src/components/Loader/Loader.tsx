@@ -1,24 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Loader = () => {
-  return (
-    <StyledWrapper>
-      <div className="loader" />
-    </StyledWrapper>
-  );
-};
-
-const StyledWrapper = styled.div`
+const StyledLoader = styled.div`
   display: inline-block;
 
-  .loader {
+  .loader-inner {
     width: 16px;
     height: 16px;
     position: relative;
   }
 
-  .loader:before {
+  .loader-inner:before {
     content: "";
     width: 16px;
     height: 2px;
@@ -30,7 +22,7 @@ const StyledWrapper = styled.div`
     animation: shadow324 0.5s linear infinite;
   }
 
-  .loader:after {
+  .loader-inner:after {
     content: "";
     width: 100%;
     height: 100%;
@@ -76,5 +68,13 @@ const StyledWrapper = styled.div`
     }
   }
 `;
+
+export const Loader: React.FC = () => {
+  return (
+    <StyledLoader>
+      <div className="loader-inner" />
+    </StyledLoader>
+  );
+};
 
 export default Loader;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import { Flex } from "@mantine/core";
 import styled from "styled-components";
@@ -6,13 +6,13 @@ import { Editor } from "@monaco-editor/react";
 import { generateNextSeo } from "next-seo/pages";
 import { LuCheck, LuCircleX, LuCopy, LuCopyCheck } from "react-icons/lu";
 import { toast } from "sonner";
-import { ArrowButton } from "../../components/ArrowButton";
-import { type FileFormat, formats, type TypeLanguage, typeOptions } from "../../constants/enumData";
-import { MONO_FONT_FAMILY } from "../../constants/globalStyle";
-import { SEO } from "../../constants/seo";
-import { editorOptions } from "../../layout/ConverterLayout/options";
-import Layout from "../../layout/PageLayout";
-import { generateType } from "../../lib/utils/generateType";
+import { ArrowButton } from "src/components/ArrowButton";
+import { type FileFormat, formats, type TypeLanguage, typeOptions } from "src/constants/enumData";
+import { MONO_FONT_FAMILY } from "src/constants/globalStyle";
+import { SEO } from "src/constants/seo";
+import { editorOptions } from "src/layout/ConverterLayout/options";
+import Layout from "src/layout/PageLayout";
+import { generateType } from "src/lib/utils/generateType";
 import {
   PublicContainer,
   PublicEyebrow,
@@ -55,18 +55,18 @@ const StyledToolFooter = styled.section`
   border-top: 1px solid var(--public-border);
 `;
 
-interface ConverterPagesProps {
+export interface TypegenWrapperProps {
   from: FileFormat;
   to: TypeLanguage;
 }
 
-export const TypegenWrapper = ({ from, to }: ConverterPagesProps) => {
+export const TypegenWrapper: React.FC<TypegenWrapperProps> = ({ from, to }) => {
   const editorRef = useRef<any>(null);
-  const [contentHasError, setContentHasError] = React.useState(false);
-  const [originalContent, setOriginalContent] = React.useState("");
-  const [convertedContent, setConvertedContent] = React.useState("");
-  const [copiedFrom, setCopiedFrom] = React.useState(false);
-  const [copiedTo, setCopiedTo] = React.useState(false);
+  const [contentHasError, setContentHasError] = useState(false);
+  const [originalContent, setOriginalContent] = useState("");
+  const [convertedContent, setConvertedContent] = useState("");
+  const [copiedFrom, setCopiedFrom] = useState(false);
+  const [copiedTo, setCopiedTo] = useState(false);
 
   const handleCopy = (content: string, setCopied: (v: boolean) => void) => {
     navigator.clipboard.writeText(content);

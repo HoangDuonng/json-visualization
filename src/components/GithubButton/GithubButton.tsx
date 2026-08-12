@@ -2,24 +2,22 @@ import React from "react";
 import { Flex } from "@mantine/core";
 import styled from "styled-components";
 import { FaGithub, FaStar } from "react-icons/fa6";
-import { MONO_FONT_FAMILY } from "../../constants/globalStyle";
+import { MONO_FONT_FAMILY } from "src/constants/globalStyle";
 
-const StyledWrapper = styled.div`
-  .codepen-button {
-    display: inline-block;
-    cursor: pointer;
-    color: white;
-    margin: 0 auto;
-    position: relative;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 4px;
-    overflow: hidden;
-    padding: 2px;
-    isolation: isolate;
-  }
+const StyledGithubLink = styled.a`
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  margin: 0 auto;
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 2px;
+  isolation: isolate;
 
-  .codepen-button::before {
+  &::before {
     content: "";
     position: absolute;
     top: 0;
@@ -34,7 +32,7 @@ const StyledWrapper = styled.div`
     transition: translate 0.25s ease-out;
   }
 
-  .codepen-button:hover::before {
+  &:hover::before {
     animation-play-state: running;
     transition-duration: 0.75s;
     translate: 0% 0%;
@@ -46,7 +44,7 @@ const StyledWrapper = styled.div`
     }
   }
 
-  .codepen-button span {
+  span.button-inner {
     position: relative;
     display: flex;
     align-items: center;
@@ -60,30 +58,28 @@ const StyledWrapper = styled.div`
   }
 `;
 
-interface GithubButtonProps {
-  stars?: number;
-  href: string;
-}
-
 const StyledStarCount = styled.span`
   font-family: ${MONO_FONT_FAMILY} !important;
 `;
 
-export const GithubButton: React.FC<GithubButtonProps> = ({ stars = 0, href }) => {
+export interface GithubButtonProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  stars?: number;
+  href: string;
+}
+
+export const GithubButton: React.FC<GithubButtonProps> = ({ stars = 0, href, ...props }) => {
   return (
-    <StyledWrapper>
-      <a className="codepen-button" href={href} target="_blank" rel="noopener">
-        <span>
-          <Flex align="center" gap="4">
-            <FaGithub size="10" />
-            GitHub
-          </Flex>
-          <Flex align="center" gap="2" style={{ opacity: 0.7 }}>
-            <FaStar size="8" />
-            <StyledStarCount>{stars.toLocaleString("en-US")}</StyledStarCount>
-          </Flex>
-        </span>
-      </a>
-    </StyledWrapper>
+    <StyledGithubLink href={href} target="_blank" rel="noopener noreferrer" {...props}>
+      <span className="button-inner">
+        <Flex align="center" gap="4">
+          <FaGithub size="10" />
+          GitHub
+        </Flex>
+        <Flex align="center" gap="2" style={{ opacity: 0.7 }}>
+          <FaStar size="8" />
+          <StyledStarCount>{stars.toLocaleString("en-US")}</StyledStarCount>
+        </Flex>
+      </span>
+    </StyledGithubLink>
   );
 };

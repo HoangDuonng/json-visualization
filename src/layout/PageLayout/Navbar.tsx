@@ -88,7 +88,7 @@ const StyledActionLink = styled(StyledNavLink)<{ $primary?: boolean }>`
   }
 `;
 
-export const Navbar = () => {
+export const Navbar: React.FC = () => {
   return (
     <StyledHeader>
       <PublicContainer $wide>

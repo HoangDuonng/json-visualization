@@ -2,34 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import { FaArrowRightLong } from "react-icons/fa6";
 
-const StyledWrapper = styled.div`
-  button {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
+const StyledButton = styled.button`
+  --primary-color: #111;
+  --hovered-color: #37ff8b;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  font-size: 16px;
+  gap: 0.5rem;
+  align-items: center;
 
-  button {
-    --primary-color: #111;
-    --hovered-color: #37ff8b;
-    position: relative;
-    display: flex;
-    font-weight: 600;
-    font-size: 16px;
-    gap: 0.5rem;
-    align-items: center;
-  }
-
-  button p {
+  p {
     margin: 0;
     position: relative;
     font-size: 16px;
     color: var(--primary-color);
   }
 
-  button::after {
+  &::after {
     position: absolute;
     content: "";
     width: 0;
@@ -40,16 +35,16 @@ const StyledWrapper = styled.div`
     transition: 0.3s ease-out;
   }
 
-  button:hover::after {
+  &:hover::after {
     width: 100%;
   }
 
-  button:hover svg {
+  &:hover svg {
     transform: translateX(4px);
     color: var(--hovered-color);
   }
 
-  button svg {
+  svg {
     color: var(--primary-color);
     transition: 0.2s;
     position: relative;
@@ -58,18 +53,20 @@ const StyledWrapper = styled.div`
   }
 `;
 
-interface AnimatedLinkButtonProps {
+export interface AnimatedLinkButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  onClick?: () => void;
 }
 
-export const AnimatedLinkButton: React.FC<AnimatedLinkButtonProps> = ({ children, onClick }) => {
+export const AnimatedLinkButton: React.FC<AnimatedLinkButtonProps> = ({
+  children,
+  onClick,
+  type = "button",
+  ...props
+}) => {
   return (
-    <StyledWrapper>
-      <button onClick={onClick}>
-        <p>{children}</p>
-        <FaArrowRightLong />
-      </button>
-    </StyledWrapper>
+    <StyledButton type={type} onClick={onClick} {...props}>
+      <p>{children}</p>
+      <FaArrowRightLong />
+    </StyledButton>
   );
 };

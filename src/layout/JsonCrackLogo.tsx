@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -9,11 +9,11 @@ const StyledLogoWrapper = styled.div`
   color: ${({ theme }) => theme.TEXT_NORMAL};
 `;
 
-const StyledTitle = styled.span<{ fontSize: string }>`
+const StyledTitle = styled.span<{ $fontSize: string }>`
   font-weight: 400;
   margin: 0;
   font-family: "Playfair Display", "Sagittaire Display", serif;
-  font-size: ${({ fontSize }) => fontSize};
+  font-size: ${({ $fontSize }) => $fontSize};
   white-space: nowrap;
   z-index: 10;
   vertical-align: middle;
@@ -22,14 +22,19 @@ const StyledTitle = styled.span<{ fontSize: string }>`
   letter-spacing: -0.02em;
 `;
 
-interface LogoProps extends React.ComponentPropsWithoutRef<"div"> {
+export interface LogoProps extends React.ComponentPropsWithoutRef<"div"> {
   fontSize?: string;
   hideLogo?: boolean;
   hideText?: boolean;
 }
 
-export const JSONCrackLogo = ({ fontSize = "1.2rem", hideText, hideLogo, ...props }: LogoProps) => {
-  const handleLogoClick = React.useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
+export const JSONCrackLogo: React.FC<LogoProps> = ({
+  fontSize = "1.2rem",
+  hideText,
+  hideLogo,
+  ...props
+}) => {
+  const handleLogoClick = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     if (typeof window === "undefined") return;
     if (!window.location.href.includes("widget")) return;
 
@@ -40,19 +45,8 @@ export const JSONCrackLogo = ({ fontSize = "1.2rem", hideText, hideLogo, ...prop
   return (
     <Link href="/" prefetch={false} target="_self" onClick={handleLogoClick}>
       <StyledLogoWrapper data-logo-hidden={hideLogo}>
-        {/* {!hideLogo && (
-          <Image
-            src="/assets/192.png"
-            loading="eager"
-            width={parseFloat(fontSize) * 18}
-            height={parseFloat(fontSize) * 18}
-            alt="logo"
-            radius={4}
-            mb="2"
-          />
-        )} */}
         {!hideText && (
-          <StyledTitle fontSize={fontSize} {...props}>
+          <StyledTitle $fontSize={fontSize} {...props}>
             JSON VIZ
           </StyledTitle>
         )}

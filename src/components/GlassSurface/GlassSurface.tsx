@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-interface GlassSurfaceProps {
+export interface GlassSurfaceProps {
   children: React.ReactNode;
   blur?: number;
   opacity?: number;

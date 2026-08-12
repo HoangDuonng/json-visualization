@@ -2,12 +2,12 @@ import React from "react";
 import { Text } from "@mantine/core";
 import styled from "styled-components";
 
-interface DocsTocItem {
+export interface DocsTocItem {
   id: string;
   label: string;
 }
 
-interface DocsTocProps {
+export interface DocsTocProps {
   title: string;
   items: DocsTocItem[];
 }
@@ -43,7 +43,7 @@ const StyledTocLink = styled.a`
   }
 `;
 
-export const DocsToc = ({ title, items }: DocsTocProps) => {
+export const DocsToc: React.FC<DocsTocProps> = ({ title, items }) => {
   if (!items.length) return null;
 
   return (

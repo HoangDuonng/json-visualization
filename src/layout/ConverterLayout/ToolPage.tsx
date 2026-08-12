@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import { Flex } from "@mantine/core";
 import styled from "styled-components";
@@ -6,11 +6,11 @@ import { Editor } from "@monaco-editor/react";
 import { generateNextSeo } from "next-seo/pages";
 import { LuCheck, LuCircleX, LuCopy, LuCopyCheck } from "react-icons/lu";
 import { toast } from "sonner";
-import { ArrowButton } from "../../components/ArrowButton";
-import { type FileFormat, formats } from "../../constants/enumData";
-import { MONO_FONT_FAMILY } from "../../constants/globalStyle";
-import { SEO } from "../../constants/seo";
-import { contentToJson, jsonToContent } from "../../lib/utils/jsonAdapter";
+import { ArrowButton } from "src/components/ArrowButton";
+import { type FileFormat, formats } from "src/constants/enumData";
+import { MONO_FONT_FAMILY } from "src/constants/globalStyle";
+import { SEO } from "src/constants/seo";
+import { contentToJson, jsonToContent } from "src/lib/utils/jsonAdapter";
 import Layout from "../PageLayout";
 import {
   PublicContainer,
@@ -55,20 +55,20 @@ const StyledToolFooter = styled.section`
   border-top: 1px solid var(--public-border);
 `;
 
-interface ToolPageProps {
+export interface ToolPageProps {
   from: FileFormat;
   to: FileFormat;
 }
 
-export const ToolPage = ({ from, to }: ToolPageProps) => {
+export const ToolPage: React.FC<ToolPageProps> = ({ from, to }) => {
   const editorRef = useRef<any>(null);
-  const [contentHasError, setContentHasError] = React.useState(false);
-  const [originalContent, setOriginalContent] = React.useState("");
-  const [convertedContent, setConvertedContent] = React.useState("");
-  const [scrollPosition, setScrollPosition] = React.useState(0);
-  const [editorHeight, setEditorHeight] = React.useState(0);
-  const [copiedFrom, setCopiedFrom] = React.useState(false);
-  const [copiedTo, setCopiedTo] = React.useState(false);
+  const [contentHasError, setContentHasError] = useState(false);
+  const [originalContent, setOriginalContent] = useState("");
+  const [convertedContent, setConvertedContent] = useState("");
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [editorHeight, setEditorHeight] = useState(0);
+  const [copiedFrom, setCopiedFrom] = useState(false);
+  const [copiedTo, setCopiedTo] = useState(false);
 
   const handleCopy = (content: string, setCopied: (v: boolean) => void) => {
     navigator.clipboard.writeText(content);

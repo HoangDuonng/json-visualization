@@ -1,15 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import { Text } from "@mantine/core";
+import { Text, type TextProps } from "@mantine/core";
 import styled from "styled-components";
 
-interface DocsNavItem {
+export interface DocsNavItem {
   label: string;
   title: string;
   href: string;
 }
 
-interface DocsNavigationProps {
+export interface DocsNavigationProps {
   title: string;
   previous?: DocsNavItem;
   next?: DocsNavItem;
@@ -28,7 +28,7 @@ const StyledNavCard = styled.div`
   }
 `;
 
-const StyledNavLabel = styled(Text)`
+const StyledNavLabel = styled(Text)<TextProps & any>`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.7rem;
@@ -66,7 +66,7 @@ const StyledNavItem = styled.div<{ $align?: "left" | "right" }>`
   }
 `;
 
-export const DocsNavigation = ({ title, previous, next }: DocsNavigationProps) => {
+export const DocsNavigation: React.FC<DocsNavigationProps> = ({ title, previous, next }) => {
   if (!previous && !next) {
     return null;
   }

@@ -1,7 +1,7 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { Renderer, Program, Triangle, Mesh } from "ogl";
 
-type Props = {
+export interface RippleGridProps {
   enableRainbow?: boolean;
   gridColor?: string;
   rippleIntensity?: number;
@@ -14,9 +14,9 @@ type Props = {
   gridRotation?: number;
   mouseInteraction?: boolean;
   mouseInteractionRadius?: number;
-};
+}
 
-const RippleGrid: React.FC<Props> = ({
+export const RippleGrid: React.FC<RippleGridProps> = ({
   enableRainbow = false,
   gridColor = "#ffffff",
   rippleIntensity = 0.05,
@@ -34,7 +34,7 @@ const RippleGrid: React.FC<Props> = ({
   const mousePositionRef = useRef({ x: 0.5, y: 0.5 });
   const targetMouseRef = useRef({ x: 0.5, y: 0.5 });
   const mouseInfluenceRef = useRef(0);
-  const uniformsRef = useRef<any>(null);
+  const uniformsRef = useRef<Record<string, { value: unknown }>>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -163,7 +163,7 @@ void main() {
     gl_FragColor = vec4(color * t * finalFade * opacity, alpha);
 }`;
 
-    const uniforms = {
+    const uniforms: Record<string, { value: unknown }> = {
       iTime: { value: 0 },
       iResolution: { value: [1, 1] },
       enableRainbow: { value: enableRainbow },
@@ -230,9 +230,10 @@ void main() {
       mousePositionRef.current.y +=
         (targetMouseRef.current.y - mousePositionRef.current.y) * lerpFactor;
 
-      const currentInfluence = uniforms.mouseInfluence.value;
+      const currentInfluence = uniforms.mouseInfluence.value as number;
       const targetInfluence = mouseInfluenceRef.current;
-      uniforms.mouseInfluence.value += (targetInfluence - currentInfluence) * 0.05;
+      uniforms.mouseInfluence.value =
+        currentInfluence + (targetInfluence - currentInfluence) * 0.05;
 
       uniforms.mousePosition.value = [mousePositionRef.current.x, mousePositionRef.current.y];
 

@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneLight } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import { MONO_FONT_FAMILY } from "../../constants/globalStyle";
+import { MONO_FONT_FAMILY } from "src/constants/globalStyle";
 
-const StyledWrapper = styled.div`
+const StyledCodeBlockContainer = styled.div`
   pre {
     font-family: ${MONO_FONT_FAMILY} !important;
     border-radius: 8px;
@@ -18,17 +18,17 @@ const StyledWrapper = styled.div`
   }
 `;
 
-interface CodeBlockProps {
+export interface CodeBlockProps {
   code: string;
   language?: string;
 }
 
 export const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "json" }) => {
   return (
-    <StyledWrapper>
+    <StyledCodeBlockContainer>
       <SyntaxHighlighter language={language} style={oneLight} customStyle={{ padding: "1rem" }}>
         {code}
       </SyntaxHighlighter>
-    </StyledWrapper>
+    </StyledCodeBlockContainer>
   );
 };

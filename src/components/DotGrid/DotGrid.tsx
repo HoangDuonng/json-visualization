@@ -56,15 +56,15 @@ function hexToRgb(hex: string) {
   };
 }
 
-const throttle = (func: (...args: any[]) => void, limit: number) => {
+const throttle = <T extends (...args: any[]) => void>(func: T, limit: number): T => {
   let lastCall = 0;
-  return function (this: any, ...args: any[]) {
+  return function (this: unknown, ...args: Parameters<T>) {
     const now = performance.now();
     if (now - lastCall >= limit) {
       lastCall = now;
       func.apply(this, args);
     }
-  };
+  } as T;
 };
 
 export const DotGrid: React.FC<DotGridProps> = ({
@@ -167,19 +167,19 @@ export const DotGrid: React.FC<DotGridProps> = ({
         const dy = dot.cy - py;
         const dsq = dx * dx + dy * dy;
 
-        let style = baseColor;
+        let styleColor = baseColor;
         if (dsq <= proxSq) {
           const dist = Math.sqrt(dsq);
           const t = 1 - dist / proximity;
           const r = Math.round(baseRgb.r + (activeRgb.r - baseRgb.r) * t);
           const g = Math.round(baseRgb.g + (activeRgb.g - baseRgb.g) * t);
           const b = Math.round(baseRgb.b + (activeRgb.b - baseRgb.b) * t);
-          style = `rgb(${r},${g},${b})`;
+          styleColor = `rgb(${r},${g},${b})`;
         }
 
         ctx.save();
         ctx.translate(ox, oy);
-        ctx.fillStyle = style;
+        ctx.fillStyle = styleColor;
         ctx.fill(circlePath);
         ctx.restore();
       }
