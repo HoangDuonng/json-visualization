@@ -153,7 +153,7 @@ const MindmapPage: React.FC = () => {
           ...SEO,
           title: "Mind Map | JSON Visualization",
           description:
-            "Import NotebookLM mind maps and edit markdown note trees on an interactive visual canvas.",
+            "Create, edit, and explore mind maps and hierarchical note trees on an interactive visual canvas.",
           canonical: "https://jsonviz.online/mindmap",
         })}
       </Head>
