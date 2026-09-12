@@ -26,6 +26,12 @@ const workflows = [
     href: "/type/json-to-typescript",
   },
   {
+    title: "Map ideas",
+    description:
+      "Import outlines from NotebookLM and build editable mind maps on an interactive canvas.",
+    href: "/mindmap",
+  },
+  {
     title: "Work with schemas",
     description: "Generate JSON Schema, validate data, and produce representative mock JSON.",
     href: "/tools/json-schema",
