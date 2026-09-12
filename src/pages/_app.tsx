@@ -74,7 +74,7 @@ function JsonViz({ Component, pageProps }: AppProps) {
   const colorSchemeManager = smartColorSchemeManager({
     key: "editor-color-scheme",
     getPathname: () => pathname,
-    dynamicPaths: ["/editor"], // Only editor paths use dynamic theme
+    dynamicPaths: ["/editor", "/mindmap"], // Only editor & mindmap paths use dynamic theme
   });
 
   const webSiteJsonLd = {
