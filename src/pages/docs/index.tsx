@@ -7,6 +7,7 @@ import { FaBolt, FaToolbox } from "react-icons/fa";
 import { IoBrushOutline, IoImages } from "react-icons/io5";
 import { MdOutlineFormatIndentIncrease, MdOutlineGeneratingTokens } from "react-icons/md";
 import { TbTransformFilled } from "react-icons/tb";
+import { TiFlowMerge } from "react-icons/ti";
 import { VscJson } from "react-icons/vsc";
 import { ChatBot } from "src/components/ChatBot";
 import { ChatButton } from "src/components/ChatButton";
@@ -47,6 +48,13 @@ const DocsPage: React.FC = () => {
       icon: <IoBrushOutline size={24} />,
       color: "#236b4a",
       link: getLocalizedLink("/docs/jsondraw"),
+    },
+    {
+      title: t("index.mindmapTitle"),
+      description: t("index.mindmapDesc"),
+      icon: <TiFlowMerge size={24} />,
+      color: "#236b4a",
+      link: getLocalizedLink("/docs/mindmap"),
     },
     {
       title: t("index.formatConversionTitle"),

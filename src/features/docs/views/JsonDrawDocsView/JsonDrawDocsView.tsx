@@ -17,8 +17,8 @@ export const JsonDrawDocsView: React.FC = () => {
         href: getLocalizedLink("/docs/visualization"),
       }}
       next={{
-        title: t("formatConversion.title"),
-        href: getLocalizedLink("/docs/format-conversion"),
+        title: t("mindmap.title"),
+        href: getLocalizedLink("/docs/mindmap"),
       }}
     >
       <Paper bg="white" c="black" p="xl" radius="md" withBorder>

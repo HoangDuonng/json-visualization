@@ -8,6 +8,7 @@ import { jqQueryTranslations } from "./docs/jq-query";
 import { jsonPathTranslations } from "./docs/json-path";
 import { jsonSchemaTranslations } from "./docs/json-schema";
 import { jsonDrawTranslations } from "./docs/jsondraw";
+import { mindmapTranslations } from "./docs/mindmap";
 import { typeGenerationTranslations } from "./docs/type-generation";
 import { visualizationTranslations } from "./docs/visualization";
 
@@ -84,6 +85,9 @@ export const docsTranslations = {
 
   // ==================== JSONDRAW ====================
   jsonDraw: jsonDrawTranslations,
+
+  // ==================== MIND MAP ====================
+  mindmap: mindmapTranslations,
 
   // ==================== FORMAT CONVERSION ====================
   formatConversion: formatConversionTranslations,
