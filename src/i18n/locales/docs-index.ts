@@ -184,6 +184,14 @@ export const docsIndexTranslations = {
     en: "Draw and annotate your JSON on a freeform canvas",
     vi: "Vẽ và chú thích JSON trên canvas tự do",
   },
+  mindmapTitle: {
+    en: "Mind Map",
+    vi: "Sơ Đồ Tư Duy",
+  },
+  mindmapDesc: {
+    en: "Visualize, edit, and organize hierarchical note trees and outlines",
+    vi: "Trực quan hóa, chỉnh sửa và sắp xếp cây ghi chú và outline phân cấp",
+  },
   formatConversionTitle: {
     en: "Format Conversion",
     vi: "Chuyển Đổi Định Dạng",

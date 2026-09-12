@@ -42,7 +42,7 @@ export const MindmapHeader: React.FC = () => {
     <StyledPanelHeader>
       <StyledPanelIdentity>
         <strong>Visualization</strong>
-        <span>NotebookLM Note Canvas</span>
+        <span>Interactive Note Canvas</span>
       </StyledPanelIdentity>
 
       <MindmapSearchInput />

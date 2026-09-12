@@ -28,7 +28,7 @@ const workflows = [
   {
     title: "Map ideas",
     description:
-      "Import outlines from NotebookLM and build editable mind maps on an interactive canvas.",
+      "Create, edit, and organize visual mind maps and hierarchical outlines on an interactive canvas.",
     href: "/mindmap",
   },
   {

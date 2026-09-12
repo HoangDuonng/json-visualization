@@ -27,6 +27,7 @@
 JSON Visualization is a tool for visualizing JSON data in a structured, interactive graphs, making it easier to explore, format, and validate JSON. It offers features like converting JSON to other formats (CSV, YAML), generating JSON Schema, executing queries, and exporting visualizations as images. Designed for both readability and usability.
 
 - **Visualizer**: Instantly convert JSON, YAML, CSV, XML, and TOML into interactive graphs or trees in dark or light mode.
+- **Mind Map**: Interactive card-based note canvas with full node CRUD, expandable/collapsible branches, horizontal/vertical layout rotation, and lossless Markdown, JSON, and Mermaid sync.
 - **Convert**: Seamlessly transform data formats, like JSON to CSV or XML to JSON, for easy sharing.
 - **Format & Validate**: Beautify and validate JSON, YAML, and CSV for clear and accurate data.
 - **Code Generation**: Generate TypeScript interfaces, Golang structs, and JSON Schema.
@@ -40,6 +41,7 @@ JSON Visualization is a tool for visualizing JSON data in a structured, interact
 - [Next.js](https://nextjs.org/)
 - [React.js](https://react.dev/)
 - [Reaflow](https://github.com/reaviz/reaflow)
+- [React Flow](https://reactflow.dev/) (`reactflow`)
 - [Monaco Editor](https://github.com/suren-atoyan/monaco-react)
 
 ## For AI Agents

@@ -52,6 +52,16 @@ User Input (JSON/YAML/CSV/XML)
    - Boolean flags keyed by `ModalName`
    - Action: `setVisible(name, open)`
 
+6. **useMindmap** - Mind map state & canvas management (`src/features/mindmap/stores/useMindmap.ts`)
+   - `inputText`: Raw text in Markdown, JSON, or Mermaid format
+   - `format`: `"markdown" | "json" | "mermaid"`
+   - `direction`: `"RIGHT" | "DOWN"`
+   - `rawTree`: Intermediate `NoteNode[]` hierarchical tree
+   - `nodes`, `edges`: React Flow node/edge elements
+   - `collapsedIds`: Set of collapsed parent node IDs
+   - `searchQuery`, `searchMatches`, `searchIndex`: Search navigation state
+   - Actions: Pure immutable tree CRUD (`addChildNode`, `deleteNode`, `updateNodeLabel`), branch toggle (`expandAllNodes`, `collapseToFirstLevel`), format conversion, and viewport controls (`centerView`, `focusFirstNode`)
+
 ### State flow
 
 ```
@@ -238,14 +248,43 @@ useModal.getState().setVisible(modalKey, true);
 - Driven by `src/features/modals/` exports and `modalTypes.ts`
 - `ModalController` maps all registered modal components
 
+## Mind Map architecture
+
+**Directory**: `src/features/mindmap/`
+
+```text
+Source Input (Markdown / JSON / Mermaid)
+         ↓
+  formatConverters.ts (Lossless conversion between formats)
+         ↓
+  markdownParser.ts (Nanoid-based unique collision-free IDs)
+         ↓
+  rawTree: NoteNode[] (Pure immutable tree model)
+         ↓
+  treeToFlow.ts (Auto-layout algorithm: RIGHT or DOWN)
+         ↓
+  React Flow Canvas (reactflow)
+         ↓
+  Custom NoteCardNode (In-canvas CRUD: edit, add child, delete, fold/unfold)
+```
+
+Key principles:
+
+- **Immutability**: Tree transformations use pure functions (`addNodeToTree`, `updateNodeInTree`, `removeNodeFromTree`).
+- **Store purity**: Viewport triggers (`fitView`, `centerView`) are invoked from component handlers via `requestAnimationFrame` rather than timers in store actions.
+- **Bi-directional sync**: In-canvas card text changes sync back to the source text editor without loss.
+
 ## Routing
 
 Next.js file-based routing:
 
 - `/` - Landing page
-- `/editor` - Main editor
+- `/editor` - Main visual graph editor
+- `/draw` - Freeform whiteboard editor (JsonDraw)
+- `/mindmap` - Interactive card-based mind map editor
 - `/widget` - Embeddable widget
-- `/docs` - Documentation
+- `/docs` - Documentation index
+- `/docs/mindmap` - Mind Map documentation
 - `/converter/[format]-to-[format]` - Format converters
 - `/type/[format]-to-[language]` - Type generators
 - `/tools/json-schema` - JSON Schema tools

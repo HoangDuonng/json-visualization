@@ -12,6 +12,10 @@
     "content": "You can switch between views using the toggle buttons at the top of the editor. The Graph view provides a traditional structured layout, while the Draw view offers a free-form whiteboard experience where you can interact with your data visually."
   },
   {
+    "title": "What is the Mind Map view?",
+    "content": "The Mind Map view is an interactive canvas that visualizes structured note hierarchies, markdown outlines, and concept trees. You can create and edit nodes directly, add child cards, fold/unfold branches, search items, rotate between horizontal and vertical layouts, and export your diagrams as PNG or markdown."
+  },
+  {
     "title": "Is JSON Visualization free?",
     "content": "Yes, JSON Visualization is a free-forever open source online tool."
   },

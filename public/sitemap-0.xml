@@ -23,6 +23,7 @@
 <url><loc>https://jsonviz.online/docs/json-path</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/docs/json-schema</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/docs/jsondraw</loc><changefreq>never</changefreq><priority>0.7</priority></url>
+<url><loc>https://jsonviz.online/docs/mindmap</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/docs/type-generation</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/docs/visualization</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/draw</loc><changefreq>never</changefreq><priority>0.7</priority></url>

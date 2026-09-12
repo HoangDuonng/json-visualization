@@ -1,6 +1,6 @@
 ---
 name: public-editorial-redesign
-description: Redesign and maintain the public-facing JSON Visualization UI with a restrained, editorial developer-tool aesthetic inspired by Amp's Models and Chronicle pages. Use for homepage, docs, converter, type-generation, tools, legal, shorten, and other non-editor public-page layout, typography, color, content, responsive, or component work. Protect /editor, /draw, /widget, editor code typography, and JsonDraw behavior.
+description: Redesign and maintain the public-facing JSON Visualization UI with a restrained, editorial developer-tool aesthetic inspired by Amp's Models and Chronicle pages. Use for homepage, docs, converter, type-generation, tools, legal, shorten, and other non-editor public-page layout, typography, color, content, responsive, or component work. Protect /editor, /draw, /mindmap, /widget, editor code typography, and JsonDraw behavior.
 ---
 
 # Public Editorial Redesign
@@ -24,11 +24,13 @@ Never modify the visual structure or behavior of:
 
 - `src/pages/editor.tsx`
 - `src/pages/draw.tsx`
+- `src/pages/mindmap.tsx`
 - `src/pages/widget.tsx`
 - `src/features/editor/**`
+- `src/features/mindmap/**`
 - `src/jsondraw/**`
 - Monaco/editor code font rules
-- graph/draw themes, stores, or canvas behavior
+- graph/draw/mindmap themes, stores, or canvas behavior
 
 Public redesign scope includes `/`, `/docs`, `/docs/**`, `/converter/**`, `/type/**`, `/tools/**`, `/shorten`, `/coming-soon`, `/legal/**`, and `/s`. Keep shared `_app.tsx` changes narrowly scoped and prove the protected routes are unaffected.
 

@@ -9,7 +9,7 @@ export const SEO: DefaultSeoProps = {
     "JSON Visualization | Online JSON Viewer - Transform your data into interactive graphs",
   title: "JSON Visualization | Online JSON Viewer - Transform your data into interactive graphs",
   description:
-    "Free online JSON viewer: visualize JSON as graphs, format, validate, convert to CSV/YAML/XML. Edit, query with jq, generate TypeScript/Go/Rust types. No signup, data stays in your browser.",
+    "Free online JSON viewer: visualize JSON as graphs, format, validate, convert to CSV/YAML/XML. Edit, mind map structured notes, query with jq, generate TypeScript/Go/Rust types. No signup, data stays in your browser.",
   canonical: SITE_URL,
   openGraph: {
     type: "website",

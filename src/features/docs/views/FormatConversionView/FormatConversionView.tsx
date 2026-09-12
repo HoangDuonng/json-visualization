@@ -15,8 +15,8 @@ export const FormatConversionView: React.FC = () => {
       subtitle={t("formatConversion.subtitle")}
       alertText={t("formatConversion.alert")}
       previous={{
-        title: t("visualization.title"),
-        href: getLocalizedLink("/docs/visualization"),
+        title: t("mindmap.title"),
+        href: getLocalizedLink("/docs/mindmap"),
       }}
       next={{
         title: t("formatValidate.title"),
