@@ -86,6 +86,7 @@
     "react-markdown": "^10.1.0",
     "react-syntax-highlighter": "^16.1.0",
     "react-zoomable-ui": "^0.11.0",
+    "reactflow": "^11.11.4",
     "reaflow": "5.4.1",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.1",
