@@ -21,8 +21,8 @@ export const FAQSection: React.FC = () => {
             <PublicEyebrow>Documentation</PublicEyebrow>
             <PublicSectionHeading>Go deeper when the workflow demands it.</PublicSectionHeading>
             <p>
-              Learn the visual editor, JsonDraw, format validation, jq, JSONPath, schema tools, and
-              image export with focused guides.
+              Learn the visual editor, JsonDraw, Mind Map, format validation, jq, JSONPath, schema
+              tools, and image export with focused guides.
             </p>
             <PublicActions>
               <PublicPrimaryLink href="/docs">Explore documentation</PublicPrimaryLink>

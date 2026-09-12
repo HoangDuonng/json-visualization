@@ -26,8 +26,9 @@ export const HeroSection: React.FC = () => {
             <PublicEyebrow>Open-source · Structured data workspace</PublicEyebrow>
             <PublicDisplay>See the shape of your data.</PublicDisplay>
             <PublicLead>
-              JSON Visualization turns JSON, YAML, XML, and CSV into readable graphs—then helps you
-              inspect, convert, validate, and generate code from the same data.
+              JSON Visualization turns JSON, YAML, XML, and CSV into readable graphs, whiteboard
+              diagrams, and mind maps—then helps you inspect, convert, validate, and generate code
+              from the same data.
             </PublicLead>
             <PublicActions>
               <PublicPrimaryLink href="/editor">Open the visual editor</PublicPrimaryLink>
@@ -43,6 +44,8 @@ export const HeroSection: React.FC = () => {
               <Image src="/assets/bf2-image.png" alt="JSON Payload to Graph transformation" />
             </StyledHeroVisual>
             <StyledMeta>
+              <dt>Workspaces</dt>
+              <dd>3</dd>
               <dt>Input formats</dt>
               <dd>4</dd>
               <dt>Type targets</dt>

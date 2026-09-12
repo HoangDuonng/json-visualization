@@ -36,6 +36,9 @@ export const Footer: React.FC<FooterProps> = ({ hideGithubLink = false }) => {
             <Link href="/draw" prefetch={false} passHref legacyBehavior>
               <StyledFooterLink>JsonDraw</StyledFooterLink>
             </Link>
+            <Link href="/mindmap" prefetch={false} passHref legacyBehavior>
+              <StyledFooterLink>Mind Map</StyledFooterLink>
+            </Link>
             <Link href="/tools/json-schema" prefetch={false} passHref legacyBehavior>
               <StyledFooterLink>JSON Schema</StyledFooterLink>
             </Link>
