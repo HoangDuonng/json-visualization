@@ -27,6 +27,7 @@ const config = {
   output: "export",
   reactStrictMode: false,
   productionBrowserSourceMaps: true,
+  devIndicators: false,
   typescript: {
     // Forked JsonDraw source has strict-null-checks conflicts
     // Webpack still compiles everything; this only skips the TS checker step

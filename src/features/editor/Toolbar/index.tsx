@@ -8,7 +8,9 @@ import { AiOutlineFullscreen, AiOutlineFullscreenExit, AiOutlineLayout } from "r
 import { FaGithub } from "react-icons/fa6";
 import { toast } from "sonner";
 import { ViewMode } from "../../../constants/enumData";
+import useMindmap from "../../../features/mindmap/stores/useMindmap";
 import { JSONVizLogo } from "../../../layout/JsonVizLogo";
+import { useModal } from "../../../store/useModal";
 import useGraph from "../views/GraphView/stores/useGraph";
 import { ThemeToggle } from "./ThemeToggle";
 import { ToolsMenu } from "./ToolsMenu";
@@ -58,6 +60,7 @@ function fullscreenBrowser() {
 export const Toolbar = () => {
   const router = useRouter();
   const isDrawView = router.pathname === "/draw";
+  const isMindmapView = router.pathname === "/mindmap";
   const [isFullscreen, setIsFullscreen] = React.useState(false);
   const [, setViewMode] = useSessionStorage({
     key: "viewMode",
@@ -74,14 +77,40 @@ export const Toolbar = () => {
     return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
   }, []);
 
+  React.useEffect(() => {
+    const handleRouteChange = () => {
+      useModal.getState().closeAll();
+    };
+
+    router.events?.on("routeChangeStart", handleRouteChange);
+    return () => {
+      router.events?.off("routeChangeStart", handleRouteChange);
+    };
+  }, [router.events]);
+
   const handleEditorClick = () => {
+    useModal.getState().closeAll();
     setViewMode(ViewMode.Graph);
     router.push("/editor");
   };
 
   const handleDrawClick = () => {
+    useModal.getState().closeAll();
     setViewMode(ViewMode.JsonDraw);
     router.push("/draw");
+  };
+
+  const handleMindmapClick = () => {
+    useModal.getState().closeAll();
+    router.push("/mindmap");
+  };
+
+  const handleToggleSource = () => {
+    if (isMindmapView) {
+      useMindmap.getState().toggleSourceCollapsed();
+    } else {
+      useGraph.getState().toggleFullscreen(!useGraph.getState().fullscreen);
+    }
   };
 
   return (
@@ -92,17 +121,21 @@ export const Toolbar = () => {
             <JSONVizLogo fontSize="14px" />
           </Flex>
         </StyledBrand>
-        <StyledToolElement title="Editor" $highlight={!isDrawView} onClick={handleEditorClick}>
+        <StyledToolElement
+          title="Editor"
+          $highlight={!isDrawView && !isMindmapView}
+          onClick={handleEditorClick}
+        >
           Editor
         </StyledToolElement>
         <StyledToolElement title="Draw" $highlight={isDrawView} onClick={handleDrawClick}>
           Draw
         </StyledToolElement>
+        <StyledToolElement title="Mind Map" $highlight={isMindmapView} onClick={handleMindmapClick}>
+          Mind Map
+        </StyledToolElement>
         <ToolsMenu />
-        <StyledToolElement
-          title="Toggle source panel"
-          onClick={() => useGraph.getState().toggleFullscreen(!useGraph.getState().fullscreen)}
-        >
+        <StyledToolElement title="Toggle source panel" onClick={handleToggleSource}>
           <AiOutlineLayout size="20" />
           <span>Source</span>
         </StyledToolElement>

@@ -3,6 +3,7 @@ import { type ModalName, modals } from "../features/modals/modalTypes";
 
 interface ModalActions {
   setVisible: (name: ModalName, open: boolean) => void;
+  closeAll: () => void;
 }
 
 type ModalState = Record<ModalName, boolean>;
@@ -16,5 +17,8 @@ export const useModal = create<ModalState & ModalActions>()(set => ({
   ...initialStates,
   setVisible: (name, open) => {
     set({ [name]: open });
+  },
+  closeAll: () => {
+    set(initialStates);
   },
 }));

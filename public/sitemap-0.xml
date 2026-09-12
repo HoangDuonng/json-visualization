@@ -29,6 +29,7 @@
 <url><loc>https://jsonviz.online/editor</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/legal/privacy</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/legal/terms</loc><changefreq>never</changefreq><priority>0.7</priority></url>
+<url><loc>https://jsonviz.online/mindmap</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/s</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/shorten</loc><changefreq>never</changefreq><priority>0.7</priority></url>
 <url><loc>https://jsonviz.online/tools/json-schema</loc><changefreq>never</changefreq><priority>0.7</priority></url>

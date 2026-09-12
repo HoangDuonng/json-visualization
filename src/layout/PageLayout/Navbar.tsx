@@ -34,6 +34,9 @@ export const Navbar: React.FC = () => {
             <StyledActionLink href="/draw" prefetch={false}>
               Draw
             </StyledActionLink>
+            <StyledActionLink href="/mindmap" prefetch={false}>
+              Mind Map
+            </StyledActionLink>
             <StyledActionLink href="/editor" prefetch={false} $primary data-primary>
               Open editor
             </StyledActionLink>
