@@ -54,9 +54,12 @@ export const MindmapDocsView: React.FC = () => {
         <StyledContentBody>
           <Text>
             {t("mindmap.whatIsDesc")}{" "}
-            <StyledLink href="/mindmap">Open Mind Map Canvas →</StyledLink>
+            <StyledLink href={getLocalizedLink("/mindmap")}>{t("mindmap.openCanvas")}</StyledLink>
           </Text>
-          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg" mt="md">
+          <Text fw={600} mt="lg" mb="xs">
+            {t("mindmap.featuresTitle")}
+          </Text>
+          <SimpleGrid cols={{ base: 1, md: 3 }} spacing="lg" mt="xs">
             <div>
               <Text fw={600} mb="xs">
                 {t("mindmap.feature1")}
@@ -95,13 +98,13 @@ export const MindmapDocsView: React.FC = () => {
           <SimpleGrid cols={{ base: 1, md: 2 }} spacing="md">
             <div>
               <Text fw={600} mb="xs">
-                Markdown Outline Syntax
+                {t("mindmap.markdownSyntax")}
               </Text>
               <CodeBlock code={sampleMarkdownOutline} language="markdown" />
             </div>
             <div>
               <Text fw={600} mb="xs">
-                Mermaid Mindmap Syntax
+                {t("mindmap.mermaidSyntax")}
               </Text>
               <CodeBlock code={sampleMermaidOutline} language="markdown" />
             </div>
@@ -167,37 +170,37 @@ export const MindmapDocsView: React.FC = () => {
               <Table.Tr>
                 <Table.Td fw={700}>⌘ / Ctrl + ⇧ + D</Table.Td>
                 <Table.Td>{t("mindmap.shortcutRotate")}</Table.Td>
-                <Table.Td>Canvas</Table.Td>
+                <Table.Td>{t("mindmap.scopeCanvas")}</Table.Td>
               </Table.Tr>
               <Table.Tr>
                 <Table.Td fw={700}>⇧ + 3</Table.Td>
                 <Table.Td>{t("mindmap.shortcutExpandAll")}</Table.Td>
-                <Table.Td>Canvas</Table.Td>
+                <Table.Td>{t("mindmap.scopeCanvas")}</Table.Td>
               </Table.Tr>
               <Table.Tr>
                 <Table.Td fw={700}>⇧ + 4</Table.Td>
                 <Table.Td>{t("mindmap.shortcutCollapseDeep")}</Table.Td>
-                <Table.Td>Canvas</Table.Td>
+                <Table.Td>{t("mindmap.scopeCanvas")}</Table.Td>
               </Table.Tr>
               <Table.Tr>
                 <Table.Td fw={700}>⇧ + 1</Table.Td>
                 <Table.Td>{t("mindmap.shortcutCenterFirst")}</Table.Td>
-                <Table.Td>Canvas</Table.Td>
+                <Table.Td>{t("mindmap.scopeCanvas")}</Table.Td>
               </Table.Tr>
               <Table.Tr>
                 <Table.Td fw={700}>⇧ + 2</Table.Td>
                 <Table.Td>{t("mindmap.shortcutFitCenter")}</Table.Td>
-                <Table.Td>Canvas</Table.Td>
+                <Table.Td>{t("mindmap.scopeCanvas")}</Table.Td>
               </Table.Tr>
               <Table.Tr>
                 <Table.Td fw={700}>⌘ / Ctrl + + / -</Table.Td>
                 <Table.Td>{t("mindmap.shortcutZoom")}</Table.Td>
-                <Table.Td>Canvas</Table.Td>
+                <Table.Td>{t("mindmap.scopeCanvas")}</Table.Td>
               </Table.Tr>
               <Table.Tr>
                 <Table.Td fw={700}>⌘ / Ctrl + F</Table.Td>
                 <Table.Td>{t("mindmap.shortcutSearch")}</Table.Td>
-                <Table.Td>Canvas / Header</Table.Td>
+                <Table.Td>{t("mindmap.scopeCanvasHeader")}</Table.Td>
               </Table.Tr>
             </Table.Tbody>
           </Table>

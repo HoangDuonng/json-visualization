@@ -19,6 +19,10 @@ export const mindmapTranslations = {
     en: "Mind Map turns nested notes and ideas into an interactive, visual card canvas. You can build trees from scratch with full node CRUD, or import existing Markdown outlines, JSON, and Mermaid syntax seamlessly.",
     vi: "Mind Map biến các ghi chú và ý tưởng phân cấp thành bảng thẻ trực quan tương tác. Bạn có thể xây dựng cây ý tưởng từ đầu với đầy đủ thao tác thêm/sửa/xóa node, hoặc nhập outline Markdown, JSON và Mermaid dễ dàng.",
   },
+  openCanvas: {
+    en: "Open Mind Map Canvas →",
+    vi: "Mở Canvas Sơ Đồ Tư Duy →",
+  },
   outlineTitle: {
     en: "Multi-Format Outline & Note Tree Support",
     vi: "Hỗ Trợ Đa Định Dạng Outline & Cây Ghi Chú",
@@ -26,6 +30,14 @@ export const mindmapTranslations = {
   outlineDesc: {
     en: "Easily visualize hierarchical outlines using indented bullet points or headers. Simply write or paste your Markdown outline into the Source editor, or build directly on the canvas.",
     vi: "Dễ dàng trực quan hóa các outline phân cấp bằng danh sách thụt đầu dòng hoặc tiêu đề. Chỉ cần viết hoặc dán outline Markdown vào khung Source, hoặc thao tác trực tiếp trên canvas.",
+  },
+  markdownSyntax: {
+    en: "Markdown Outline Syntax",
+    vi: "Cú pháp Outline Markdown",
+  },
+  mermaidSyntax: {
+    en: "Mermaid Mindmap Syntax",
+    vi: "Cú pháp Mindmap Mermaid",
   },
   howToTitle: {
     en: "How to Use Mind Map",
@@ -118,6 +130,14 @@ export const mindmapTranslations = {
   tableScope: {
     en: "Scope",
     vi: "Phạm vi",
+  },
+  scopeCanvas: {
+    en: "Canvas",
+    vi: "Canvas",
+  },
+  scopeCanvasHeader: {
+    en: "Canvas / Header",
+    vi: "Canvas / Thanh công cụ",
   },
   shortcutRotate: {
     en: "Toggle horizontal / vertical layout",
