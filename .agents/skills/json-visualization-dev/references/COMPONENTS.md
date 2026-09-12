@@ -190,6 +190,7 @@ import SplashCursor from "src/components/Cursor/Cursor";
 ```
 
 **Features**:
+
 - 2D Navier-Stokes fluid animation
 - Separated GLSL shader sources in `shaders.ts`
 - WebGL helpers and Framebuffer FBO utilities in `webgl.ts`
@@ -495,7 +496,47 @@ const StyledMantineButton = styled(Button)<ButtonProps>`
 `;
 ```
 
-## Component creation checklist
+## Mind Map components
+
+**Directory**: `src/features/mindmap/components/`
+
+### MindmapCanvas
+
+- **File**: `src/features/mindmap/components/MindmapCanvas.tsx`
+- **Purpose**: React Flow (`reactflow`) canvas wrapper with custom `noteCard` node type, smoothstep edges, background grid toggle, and viewport synchronizer.
+
+### NoteCardNode
+
+- **File**: `src/features/mindmap/components/NoteCardNode.tsx`
+- **Purpose**: Custom React Flow node representing an interactive note card with full CRUD capability.
+- **Features**:
+  - Double-click for inline editing with cursor auto-focused at the end of the text.
+  - Add child node via hover `+` button.
+  - Delete node and reconnect children via hover `×` button.
+  - Fold/unfold indicator pill badge showing child count.
+  - Strict `MONO_FONT_FAMILY` typography matching editor styling.
+
+### MindmapOptionsMenu
+
+- **File**: `src/features/mindmap/components/MindmapOptionsMenu.tsx`
+- **Purpose**: Floating top-left action menu: Rotate layout (`⌘ ⇧ D`), Expand all (`⇧ 3`), Collapse deep branches (`⇧ 4`), Export image PNG / Copy PNG to clipboard, Download Markdown / JSON, and Toggle dot grid (`⌘ '`).
+
+### MindmapZoomControl
+
+- **File**: `src/features/mindmap/components/MindmapZoomControl.tsx`
+- **Purpose**: Bottom-left controls matching GraphView: Center root node (`⇧ 1`), Fit to center (`⇧ 2`), Zoom in (`⌘ +`), Zoom out (`⌘ -`).
+
+### MindmapSearchInput
+
+- **File**: `src/features/mindmap/components/MindmapSearchInput.tsx`
+- **Purpose**: Search bar in header with match counter, cycling with Enter, and smooth viewport panning.
+
+### MindmapTextEditor & MindmapBottomBar
+
+- **Files**: `src/features/mindmap/components/MindmapTextEditor.tsx`, `MindmapBottomBar.tsx`
+- **Purpose**: Monaco-backed Source panel with format switcher (Markdown, JSON, Mermaid), line count, and Live Transform toggle.
+
+## Component creation guidelines
 
 When creating a new component:
 

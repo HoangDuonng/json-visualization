@@ -262,6 +262,53 @@ function ToolbarAction() {
 
 `src/features/modals/ModalController.tsx` maps over the `modals` array, reads `useModal(state => state[modalKey])`, and renders each modal with `opened` and `onClose`.
 
+## useMindmap store
+
+**File**: `src/features/mindmap/stores/useMindmap.ts`
+
+**Purpose**: Manages hierarchical note tree state, React Flow nodes and edges, in-canvas node CRUD, format switching, layout direction, folding/unfolding, search, and viewport control.
+
+### State
+
+```typescript
+interface MindmapState {
+  inputText: string;
+  format: "markdown" | "json" | "mermaid";
+  direction: "RIGHT" | "DOWN";
+  error: string | null;
+  liveTransformEnabled: boolean;
+  rawTree: NoteNode[];
+  collapsedIds: Set<string>;
+  nodes: Node<NoteCardData>[];
+  edges: Edge[];
+  reactFlowInstance: ReactFlowInstance | null;
+  isSourceCollapsed: boolean;
+  searchQuery: string;
+  searchMatches: string[];
+  searchIndex: number;
+}
+```
+
+### Key Actions
+
+- `setInputText(text)`: Updates source input and triggers parsing when live transform is enabled.
+- `setFormat(format)`: Losslessly converts data between Markdown, JSON, and Mermaid syntax without dropping user edits.
+- `addChildNode(parentId)`: Creates a new child node with a nanoid ID using pure immutable tree helper `addNodeToTree`.
+- `deleteNode(nodeId)`: Removes node and reconnects children to parent using `removeNodeFromTree`.
+- `updateNodeLabel(nodeId, label)`: Updates card text immutably via `updateNodeInTree` and keeps source text in sync.
+- `toggleNodeExpand(nodeId)`: Toggles collapsed state of a specific branch.
+- `expandAllNodes()`: Unfolds all collapsed branches across the canvas.
+- `collapseToFirstLevel()`: Folds all sub-branches back to root + first level.
+- `toggleDirection()`: Flips layout between horizontal (`RIGHT`) and vertical (`DOWN`).
+- `setSearchQuery(query)` / `skipSearchResult()`: Filters matching nodes and moves canvas viewport smoothly.
+- `centerView()` / `focusFirstNode()`: Triggers React Flow viewport centering and zooming.
+
+### Architectural Rules for Mindmap Store
+
+1. **Strict Immutability**: Never mutate node arrays or tree objects directly (`parent.children.push(...)` or `target.text = ...`). Always return new objects via pure helpers (`addNodeToTree`, `updateNodeInTree`).
+2. **No Viewport Timers in Store**: Store actions must not contain `setTimeout(...fitView, 50)`. UI triggers should call `centerView()` via `requestAnimationFrame` at the component layer.
+3. **No Side-Effects Swallowing Errors**: Do not bypass actions or swallow errors silently. Keep state flow unidirectional.
+
 ## View mode state
 
 Editor view mode is stored in session storage, not Zustand.

@@ -26,11 +26,13 @@ This skill helps you work with the JSON Visualization codebase - an open-source 
 **What it does**: Converts JSON, YAML, CSV, and XML into interactive graphs/trees with features like format conversion, validation, code generation, JsonDraw editing, and image export.
 
 **Tech stack**:
+
 - Next.js 16 (React 19) + TypeScript
 - Zustand for state management
 - styled-components + Mantine v8 for UI
 - Monaco Editor for text editing
 - Reaflow for graph visualization
+- React Flow (reactflow) for interactive mind map canvas
 - Embedded JsonDraw packages under `src/jsondraw/`
 
 ## Quick start
@@ -53,9 +55,11 @@ pnpm lint:fix
 
 ```text
 src/
-|-- pages/              # Next.js routes (index, editor, converters, type generators)
+|-- pages/              # Next.js routes (index, editor, draw, mindmap, docs, converters)
 |-- features/
 |   |-- editor/         # Main editor (TextEditor, GraphView, TreeView, JsonDrawView, Toolbar)
+|   |-- mindmap/        # Mind Map (NoteCardNode, canvas, useMindmap, formatConverters, exportPng)
+|   |-- docs/           # Docs views (MindmapDocsView, JsonDrawDocsView, etc.)
 |   `-- modals/         # Modal components and ModalController
 |-- store/              # Zustand stores (useFile, useConfig, useJson, useModal)
 |-- components/         # Reusable UI (buttons, animations, effects)
@@ -74,7 +78,8 @@ src/
 1. **Input** -> `useFile` store -> `contentToJson()` -> `useJson` store
 2. **Graph render** -> `useGraph.setGraph(json)` -> `jsonParser.ts` -> Reaflow canvas
 3. **View render** -> `GraphView`, `TreeView`, or `JsonDrawView` selected via `viewMode` session storage
-4. **Actions** -> Toolbar -> Modals -> Store updates -> Re-render
+4. **Mind Map flow** -> Markdown outline / JSON / Mermaid -> `useMindmap.parseAndLayout()` -> `treeToFlowElements()` -> React Flow canvas with node CRUD and bi-directional text sync
+5. **Actions** -> Toolbar -> Modals -> Store updates -> Re-render
 
 ### Key files
 
@@ -82,6 +87,9 @@ src/
 - `src/store/useJson.ts` - Pretty-printed JSON string and graph update trigger
 - `src/features/editor/views/GraphView/stores/useGraph.ts` - Graph nodes, edges, viewport, loading, fullscreen, selection
 - `src/features/editor/views/GraphView/lib/jsonParser.ts` - JSON string to graph nodes/edges
+- `src/features/mindmap/stores/useMindmap.ts` - Mind map state, immutable tree CRUD, format switching, layout, and search
+- `src/features/mindmap/lib/treeToFlow.ts` - Converts NoteNode tree into React Flow nodes and edges (horizontal/vertical)
+- `src/features/mindmap/lib/formatConverters.ts` - Lossless data conversions across Markdown, JSON, and Mermaid
 - `src/lib/utils/jsonAdapter.ts` - JSON/YAML/XML/CSV parsing and conversion
 - `src/constants/enumData.ts` - `FileFormat`, `TypeLanguage`, `ViewMode`, and option lists
 
@@ -92,7 +100,6 @@ src/
 ```typescript
 // Good: use type imports
 import type { MenuItemProps } from "@mantine/core";
-
 // Avoid regular imports for types
 import { MenuItemProps } from "@mantine/core";
 ```
@@ -186,12 +193,14 @@ const StyledButton = styled.button`
 ## Design system
 
 **Colors**:
+
 - Background: `#f7f3e6` (warm beige)
 - Primary text: `#1a1a1a`
 - Accent: `#37ff8b` (neon green)
 - Yellow: `#f7c948`
 
 **Fonts**:
+
 - Global: Playfair Display (serif)
 - Code/editor: JetBrains Mono / `MONO_FONT_FAMILY`
 

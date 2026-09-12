@@ -6,11 +6,11 @@ This document provides guidelines for AI coding agents working in the JSON Visua
 
 > **💡 For comprehensive documentation**: See [`.agents/skills/json-visualization-dev/`](.agents/skills/json-visualization-dev/) for structured Agent Skills with detailed architecture, components, and state management references.
 
-For public-page redesigns, also load [`.agents/skills/public-editorial-redesign/SKILL.md`](.agents/skills/public-editorial-redesign/SKILL.md) and its references. Keep `/editor`, `/draw`, and `/widget` outside that skill's modification scope.
+For public-page redesigns, also load [`.agents/skills/public-editorial-redesign/SKILL.md`](.agents/skills/public-editorial-redesign/SKILL.md) and its references. Keep `/editor`, `/draw`, `/mindmap`, and `/widget` outside that skill's modification scope.
 
 ## Project Overview
 
-JSON Visualization is a Next.js 16 application for visualizing and manipulating JSON data. It uses React 19, TypeScript, Zustand for state management, styled-components for styling, and Mantine v8 for UI components.
+JSON Visualization is a Next.js 16 application for visualizing and manipulating JSON and structured data. It uses React 19, TypeScript, Zustand for state management, styled-components for styling, and Mantine v8 for UI components. It provides three main workspaces: Visual Graph Editor (Reaflow), Whiteboard (JsonDraw), and Interactive Mind Map (React Flow / reactflow).
 
 ## Build & Development Commands
 
@@ -186,7 +186,7 @@ import { isIframe } from "../lib/utils/helpers";
 src/
 ├── pages/           # Next.js pages (routing)
 ├── components/      # Reusable UI components
-├── features/        # Feature modules (editor, modals, etc.)
+├── features/        # Feature modules (editor, mindmap, modals, docs, collab, etc.)
 ├── layout/          # Layout components (Navbar, Footer, etc.)
 ├── hooks/           # Custom React hooks
 ├── store/           # Zustand stores (global state)

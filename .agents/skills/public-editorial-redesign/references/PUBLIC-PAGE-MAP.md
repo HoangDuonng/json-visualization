@@ -7,8 +7,10 @@ Use this map to plan changes without touching the editor application.
 ```text
 src/pages/editor.tsx  -> /editor
 src/pages/draw.tsx    -> /draw
+src/pages/mindmap.tsx -> /mindmap
 src/pages/widget.tsx  -> /widget
 src/features/editor/**
+src/features/mindmap/**
 src/jsondraw/**
 ```
 
