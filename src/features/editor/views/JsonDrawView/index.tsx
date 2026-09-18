@@ -11,6 +11,7 @@ import {
   PasswordInput,
   Group,
   Badge,
+  Tooltip,
 } from "@mantine/core";
 import styled from "styled-components";
 import {
@@ -32,14 +33,18 @@ import {
   FiKey,
   FiUserX,
   FiEye,
+  FiCpu,
 } from "react-icons/fi";
 import { toast } from "sonner";
 import useConfig from "../../../../store/useConfig";
 import { useCollab } from "../../../collab/CollabRoot";
 import { useDrawingSync } from "../../../collab/useDrawingSync";
 import useGraph from "../GraphView/stores/useGraph";
+import { AiContextModal } from "./AiContextModal";
 import { LoadFromLinkDialog } from "./LoadFromLinkDialog";
 import SocialShareButton from "./SocialShareButton";
+import type { DiagramSemantics } from "./aiContextParser";
+import { extractDiagramSemantics } from "./aiContextParser";
 import { jsonToJsonDrawElements } from "./jsonToJsonDraw";
 import {
   createShareLink,
@@ -85,6 +90,10 @@ export const JsonDrawView = () => {
   const [justCopied, setJustCopied] = React.useState(false);
   const [isSharing, setIsSharing] = React.useState(false);
   const copyTimerRef = React.useRef<number | null>(null);
+
+  // AI Context Exporter states
+  const [showAiModal, setShowAiModal] = React.useState(false);
+  const [aiSemantics, setAiSemantics] = React.useState<DiagramSemantics | null>(null);
 
   const [followedUserId, setFollowedUserId] = React.useState<string | null>(null);
 
@@ -514,6 +523,21 @@ export const JsonDrawView = () => {
     }
   }, [createSnapshotShareUrl]);
 
+  const handleOpenAiContext = React.useCallback(() => {
+    const api = jsonDrawAPIRef.current;
+    if (!api) return;
+
+    try {
+      const elements = api.getSceneElementsIncludingDeleted();
+      const semantics = extractDiagramSemantics(elements);
+      setAiSemantics(semantics);
+      setShowAiModal(true);
+    } catch (error) {
+      console.error("Failed to extract AI diagram context:", error);
+      toast.error("Failed to extract diagram context.");
+    }
+  }, []);
+
   // Periodically broadcast the current viewport so that when someone clicks
   // "Follow", they can snap to the latest camera (scroll + zoom) of the user
   // being followed, even if that user only zoomed/panned without moving
@@ -746,6 +770,14 @@ export const JsonDrawView = () => {
           </Box>
         </Stack>
       </Modal>
+
+      {/* AI Architecture Context Modal */}
+      <AiContextModal
+        opened={showAiModal}
+        onClose={() => setShowAiModal(false)}
+        semantics={aiSemantics}
+        darkMode={darkmodeEnabled}
+      />
 
       {/* Waiting for Approval Modal */}
       <Modal
@@ -1155,6 +1187,19 @@ export const JsonDrawView = () => {
                 )}
 
                 <Group gap="xs">
+                  <Tooltip label="Context for AI" withArrow position="bottom">
+                    <ActionIcon
+                      size={36}
+                      radius="md"
+                      variant={darkmodeEnabled ? "light" : "default"}
+                      color="violet"
+                      onClick={handleOpenAiContext}
+                      aria-label="Context for AI"
+                    >
+                      <FiCpu size={18} />
+                    </ActionIcon>
+                  </Tooltip>
+
                   <Menu shadow="md" width={220} position="bottom-end">
                     <Menu.Target>
                       <Button
@@ -1171,6 +1216,13 @@ export const JsonDrawView = () => {
                     </Menu.Target>
 
                     <Menu.Dropdown>
+                      <Menu.Label>AI Export</Menu.Label>
+                      <Menu.Item leftSection={<FiCpu size={14} />} onClick={handleOpenAiContext}>
+                        Context for AI
+                      </Menu.Item>
+
+                      <Menu.Divider />
+
                       <Menu.Label>Snapshot</Menu.Label>
                       <Menu.Item leftSection={<FiCopy size={14} />} onClick={handleShareClick}>
                         Copy Snapshot Link
